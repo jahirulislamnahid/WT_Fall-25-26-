@@ -80,11 +80,12 @@
         <h2>Admin Panel</h2>
         <p>Sign in with your admin Information</p>
 
-        <form>
-            <input type="text" placeholder="Admin ID" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Log In</button>
-        </form>
+    <form method="post" action="Loginvalidation.php">
+    <input type="text" name="adminID" placeholder="Admin ID">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Log In</button>
+
+    </form>
 
         </div>
     </div>
