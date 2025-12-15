@@ -73,7 +73,6 @@
 <body>
 
     <div class="login-box">
-        <!-- Optional Logo -->
         <img src="Screenshot 2025-12-09 205239.png">
 
 
@@ -87,7 +86,6 @@
 
     </form>
 
-        </div>
     </div>
 
 </body>

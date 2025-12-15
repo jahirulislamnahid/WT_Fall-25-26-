@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// If there are errors → show alert and go back
+// If there are errors show alert and go back
 if ($adminError != "" || $passError != "") {
     $msg = $adminError . "\\n" . $passError;  // show both errors if exist
     echo "
@@ -47,7 +47,7 @@ if ($success != "") {
     echo "
     <script>
         alert('$success');
-        window.location.href='admin_dashboard.php'; // or admin_login.php
+        window.location.href='admin_dashboard.php';
     </script>
     ";
 }
