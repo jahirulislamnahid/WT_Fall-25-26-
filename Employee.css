@@ -1,0 +1,120 @@
+<style>
+     * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+}
+
+.container {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    background: #416cd2;
+    height: 100vh;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.logo {
+    color: #ff7a00;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #333;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+    background: #ff7a00;
+    color: white;
+}
+
+/* Main Area */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Top Bar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.top-actions .btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btn.add {
+    background: #ff7a00;
+    color: white;
+}
+
+.btn.logout {
+    background: #ff4d4d;
+    color: white;
+}
+
+.employee-table-container {
+    margin: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+
+}
+
+.employee-table-container h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+}
+
+.employee-table thead {
+    background-color: #be236cff;
+    color: #ffffff;
+
+}
+
+.employee-table th,
+.employee-table td {
+    padding: 10px 10px;
+    border: 1px solid #a54141ff;
+    text-align: center;
+}
+
+.employee-table tbody tr:hover {
+    background-color: #cd7827ff;
+    transition: 0.3s;
+}
+
+</style>
