@@ -8,7 +8,7 @@
 }
 
 body {
-    background: #b99e55ff;
+    background: #beb59dff; 
 }
 
 .background h1 {
@@ -37,16 +37,18 @@ body {
 
 
 button {
-    padding: 12px 25px;
-    margin: 5px;
-    border: solid black;
-    background: transparent;
+    padding: 12px 28px;
+    margin: 8px;
+    border: white;
+    border-radius: 6px;
+    background-color: #1a53ceff;
     color: white;
+    font-size: 15px;
 
 }
 
 button:hover {
-    background: blue;
+    background: #9cd23eff;
     color: black;
 
 }

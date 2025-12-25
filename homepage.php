@@ -22,7 +22,7 @@ session_start();
 if (isset($_SESSION["username"])) {
      echo "<p> You are logged in as <b>" .$_SESSION['username'] . "</b></p>";
 
-     echo "<a href= 'AdminDashboard.php'> <button type='button'> Go to Dashboard </button> </a> <br> <br>";
+     echo "<a href= 'dashboard.php'> <button type='button'> Go to Dashboard </button> </a> <br> <br>";
 
      echo "<a href='logout.php'> <button type='button'> Logout</button> </a>";
      
@@ -33,7 +33,7 @@ if (isset($_SESSION["username"])) {
 
     echo "<a href='login.php'> <button type = 'button'> Login</button> </a>";
 
-    echo "< a href='register.php'> <button type ='button'> Register now </button> </a>";
+    echo "<a href='register.php'> <button type ='button'> Register now </button> </a>";
 
    }
    ?>

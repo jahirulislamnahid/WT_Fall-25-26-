@@ -1,6 +1,3 @@
- <!DOCTYPE html>
-<html>
-<head>
  <style>
  * {
     margin: 0;
@@ -10,25 +7,24 @@
 }
 
 body {
-    background: #f4f6f9;
+    background: #ebe9e9ff;
 }
 
 .container {
     display: flex;
 }
 
-/* Sidebar */
 .sidebar {
     width: 230px;
-    background: #ffffff;
+    background: #e08ee6ff;
     height: 100vh;
     padding: 20px;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #0a0909ff;
 }
 
 .logo {
-    color: #ff7a00;
-    font-size: 18px;
+    color: #020201ff;
+    font-size: 20px;
     margin-bottom: 30px;
 }
 
@@ -46,7 +42,7 @@ body {
 
 .sidebar ul li:hover,
 .sidebar ul li.active {
-    background: #ff7a00;
+    background: #482bafff;
     color: white;
 }
 
@@ -55,6 +51,7 @@ body {
     flex: 1;
     padding: 20px;
 }
+
 
 /* Top Bar */
 .topbar {
@@ -82,12 +79,18 @@ body {
     color: white;
 }
 
+.btn.home  {
+    background: #3619d8ff;
+    color: white;
+}
+
 /* Cards */
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    margin-top: 60px;
 }
 
 .card {
@@ -135,5 +138,3 @@ body {
     margin-top: 8px;
 }
 </style>
-</head>
-</html>

@@ -1,37 +1,4 @@
-<?php
-session_start();
-if (isset($_SESSION["username"]))
-{
-    header("Location:dashboard.php");
-    exit();
-}
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
-$user=$_POST["username"];
-$pass=$_POST["password"];
-
-if ($user=="admin" && $pass=="123456")
-{
-
-    $_SESSION["username"] = $user;
-    header("Location:dashboard.php");
-    exit();
-}
-else{
-
-    $error="Invalid Id and pass";
-}
-
-}
-
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Login</title>
-
-    <style>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -97,28 +64,3 @@ else{
         }
 
     </style>
-</head>
-<body>
-
-    <div class="login-box">
-        <img src="Screenshot 2025-12-09 205239.png">
-
-
-        <h2>Admin Panel</h2>
-        <p>Sign in with your admin Information</p>
-
-    <form method="post" action="Loginvalidation.php">
-    <input type="text" name="adminID" placeholder="Admin ID">
-    <input type="password" name="password" placeholder="Password">
-    <button type="submit">Log In</button>
-
-    </form>
-
-    <p style="color:red;">
-    <?php if (isset($error)) echo $error; ?>
-</p>
-
-    </div>
-
-</body>
-</html>
