@@ -1,57 +1,64 @@
-<style>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+    * {
+        box-sizing: border-box;
+        font-family: cursive;
+    }
 
-body {
-    background: #beb59dff; 
-}
+    body {
+        background: #efeff5ff;
+        color: #020107ff;;
+    }
 
-.background h1 {
-    font-size: 90px;
-    margin-top: 10px;
     
-}
+    .auth-buttons a {
+         display: inline-block;
+         padding: 14px 28px;
+         border-radius: 12px;
+         text-decoration: none;
+         font-weight: bold;
+    }
+    .auth-buttons .login{
+        font-weight: bold;
+        color: #eddedeff;
+        background: #ff7a00;
 
-.background h2 {
-    font-size: 60px;
-    margin-top: 10px;
-    
-}
+    }
+ 
+     .auth-buttons .Register{
+        font-weight: bold;
+        color: #eadadaff;
+        background: #781ebcff;
 
-.background h3 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    
-}
+    }
+    .content{
+        text-align: center;
+        padding: 10px;
+    }
 
-.background p {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
+    .content h1 {
+        font-size: 60px;
+        margin-bottom: 20px;
+    }
 
+    .content h1 span{
+        color: #ff7a00;
+    }
 
+    .content P {
+        color: #ad9696ff;
+        font-size: 16px;
+        line-height: 1.6;
+    }
 
-button {
-    padding: 12px 28px;
-    margin: 8px;
-    border: white;
-    border-radius: 6px;
-    background-color: #1a53ceff;
-    color: white;
-    font-size: 15px;
+    .video-box {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+    }
 
-}
+    .video-box iframe {
+        width: 720px;
+        height: 500px;
+        border-radius: 12px;
 
-button:hover {
-    background: #9cd23eff;
-    color: black;
-
-}
-
-</style>
-
+    }

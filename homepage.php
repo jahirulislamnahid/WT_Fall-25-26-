@@ -1,43 +1,39 @@
-<?php
-session_start();
-?>
-
 <DOCTYPE html>
-    <html>
-        <head>
-            <title> Our project homepage</title>
-            <link rel="stylesheet" href="homeCSS.php">
+    <head>
+        <title> Office Management System Home</title>
+        <link rel="stylesheet" href="homeCSS.php">
 </head>
 <body>
-    <div class="background">
-        
-        <h1><span>IT Solitions </span> For <br> your Business</h1>
-        <h2> Neurobyte </h2>
-        <h3> Intelligent Software Solutions for a Smarter Future </h3>
+    
+    <div class="content">
+        <h1> NeuroByte <br>
+        <span> An Intelligent software Solutions <br> for your Business</span>
+    </h1>
 
+    <p>
+        The all-in-one platform to streamline your HR processes, <br>
+        from payroll and attendance to leave management and announcements.
+        Empower your workforce and simplify your administration.<br>
+        <br>
+</p>
+    <div class="auth-buttons">
+     <a href="login.php" class="login">Login</a>
+     <a href="Register.php" class="Register">Register Now</a>
 </div>
-     
+    
+<div class="video-box">
+    <iframe
+        src="https://www.youtube.com/embed/mq508HXzccI?autoplay=1&mute=1&rel=0"
+        title="YouTube video"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
 
-    <?php
-if (isset($_SESSION["username"])) {
-     echo "<p> You are logged in as <b>" .$_SESSION['username'] . "</b></p>";
-
-     echo "<a href= 'dashboard.php'> <button type='button'> Go to Dashboard </button> </a> <br> <br>";
-
-     echo "<a href='logout.php'> <button type='button'> Logout</button> </a>";
-     
-} 
-   else{
-      
-    echo "<p> You are logged in </p>";
-
-    echo "<a href='login.php'> <button type = 'button'> Login</button> </a>";
-
-    echo "<a href='register.php'> <button type ='button'> Register now </button> </a>";
-
-   }
-   ?>
-   
 </body>
 </html>
+
+
+
 
