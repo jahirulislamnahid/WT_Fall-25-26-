@@ -62,3 +62,37 @@
         border-radius: 12px;
 
     }
+
+    .btn-group {
+        margin-top: 15px;
+    }
+
+    .btn {
+         display: inline-block;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: 0.3s ease;
+    }
+
+    .dashboard-btn {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .dashboard-btn:hover {
+        background-color: #d4e917ff;
+        color: #0a0b00ff;;
+    }
+
+    .logout-btn {
+        background-color: #c51cafff;
+        color: white;
+    }
+
+     .logout-btn:hover {
+        background-color: #16c0f3ff;
+        color:  #e61669ff;
+    }

@@ -1,4 +1,4 @@
- <style>
+
  * {
     margin: 0;
     padding: 0;
@@ -46,14 +46,14 @@ body {
     color: white;
 }
 
-/* Main Area */
+
 .main {
     flex: 1;
     padding: 20px;
 }
 
 
-/* Top Bar */
+
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -84,7 +84,7 @@ body {
     color: white;
 }
 
-/* Cards */
+
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -108,13 +108,13 @@ body {
     margin-top: 10px;
 }
 
-/* Card Colors */
+
 .orange { background: #ff9f43; }
 .purple { background: #5f27cd; }
 .green  { background: #10ac84; }
 .blue   { background: #1e90ff; }
 
-/* Small Cards */
+
 .small-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -137,4 +137,3 @@ body {
     font-size: 22px;
     margin-top: 8px;
 }
-</style>

@@ -1,16 +1,25 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["username"]))
+{
+    header("Location:login.php");
+    exit();
+}
+
+?>
+
 <DOCTYPE html>
 <html>
 <head>
-
-    <title>Office Management System Admin Dashboard</title>
-    <link rel="stylesheet" href="AdminCSS.php">
-   
+    <title>Dashboard</title>
+     <link rel="stylesheet" href="AdminCSS.php">
 </head>
 <body>
 
+
 <div class="container">
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
         <ul>
@@ -26,12 +35,11 @@
         </ul>
     </aside>
 
-    <!-- Main Content -->
     <main class="main">
 
-        <!-- Top Bar -->
         <header class="topbar">
-            <h2> Hello, Admin </h2>
+            <p>Welcome, <b><?php echo $_SESSION["username"]; ?></b></p>
+
             <h2>Here whats happening with your team today</h2>
             <div class="top-actions">
                 <button class="btn add">+ Add New Employee</button>
@@ -44,7 +52,6 @@
             </div>
         </header>
 
-        <!-- Cards -->
         <section class="cards">
             <div class="card orange">
                 <h3>Total Employees</h3>
@@ -63,7 +70,6 @@
             </div>
         </section>
 
-        <!-- Small Cards -->
         <section class="small-cards">
             <div class="small-card">
                 <h4>Present Today</h4>
