@@ -42,7 +42,9 @@ if (!isset($_SESSION["username"]))
 
             <h2>Here whats happening with your team today</h2>
             <div class="top-actions">
+                <a href="AddEmployee.php">
                 <button class="btn add">+ Add New Employee</button>
+                </a>
                 <a href="logout.php">
                 <button class="btn logout">Logout</button>
                 </a>
