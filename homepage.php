@@ -8,7 +8,7 @@ session_start();
         <link rel="stylesheet" href="homeCSS.php">
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
+    <h1>Welcome to Neurobyte</h1>
    
    <?php
 if (isset($_SESSION["username"])) {

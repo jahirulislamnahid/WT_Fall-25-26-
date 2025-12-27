@@ -5,8 +5,8 @@
     }
 
     body {
-        background: #efeff5ff;
-        color: #020107ff;;
+        background: #ecececff;
+        color: #160374ff;;
     }
 
     
@@ -32,12 +32,11 @@
     }
     .content{
         text-align: center;
-        padding: 10px;
     }
 
     .content h1 {
         font-size: 60px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .content h1 span{
@@ -102,7 +101,7 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 30px;
         padding: 60px 80px;
-        background-color: #ffffff;
+        background-color: #b2b6acff;
     }
 
     .feature-box {
