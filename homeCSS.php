@@ -96,3 +96,28 @@
         background-color: #16c0f3ff;
         color:  #e61669ff;
     }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        padding: 60px 80px;
+        background-color: #ffffff;
+    }
+
+    .feature-box {
+        display: flex;
+        gap: 15px;
+    }
+
+    .feature-box h3 {
+        font-size: 18px;
+    }
+
+    .feature-box p {
+        margin-top: 5px;
+        color: #bc1919ff;
+        font-size: 15px;
+    }
+
+  

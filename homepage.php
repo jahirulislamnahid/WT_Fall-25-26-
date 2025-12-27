@@ -50,6 +50,33 @@ if (isset($_SESSION["username"])) {
     </iframe>
 </div>
 
+<section class="features">
+    <div class="feature-box">
+        <h3> Employee Management</h3>
+        <p>>Keep all employee records organized and accessible. Manage profiles, roles, and departments with ease.</p>
+</div>
+    
+    <div class="feature-box">
+        <h3> Leave Management </h3>
+        <p> Automate leave requests and approvals. Track leave balances and view team availability at a glance.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3> Payroll Management</h3>
+        <p> Simplify payroll with automated calculations and easy payslip generation.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3> Announcement </h3>
+        <p>Post in general notice to everyone and announce the important notices.</p>
+    </div>
+
+</section>
+
+
+
+
+
 </body>
 </html>
 
