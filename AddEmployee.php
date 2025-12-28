@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <head>
     <title>Add New Employee</title>
+    <link rel="stylesheet" href="AddEmployeeCSS.php">
 </head>
 <body>
 
