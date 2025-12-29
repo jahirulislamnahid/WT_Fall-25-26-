@@ -81,7 +81,19 @@ $employees = $_SESSION["employees"] ?? [];
                     </tr>
 
                     <!-- Dynamic Employee from Form -->
-                    
+                    <?php if (!empty($employees)): ?>
+                        <?php foreach ($employees as $index => $emp): ?>
+                            <tr>
+                                <td>EMP-<?= 100+ $index ?></td>
+                                <td><?= $emp["firstname"] . "" . $emp["lastname"] ?></td>
+                                <td><?= date("Y") ?></td>
+                                <td><?= $emp["department"] ?></td>
+                                <td><?= $emp["experience"] ?></td>
+                                <td><?= $emp["email"] ?></td>
+                                <td><?= $emp["salary"] ?></td>
+                                <td>
+                                    <form method= "post" action="DeleteEmployee.php" style="display:inline;">
+
 
 
         </div>
