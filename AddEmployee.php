@@ -1,4 +1,5 @@
 <DOCTYPE html>
+<html>
 <head>
     <title>Add New Employee</title>
     <link rel="stylesheet" href="AddEmployeeCSS.php">
@@ -6,44 +7,59 @@
 </head>
 <body>
 
+<div class="content">
+    <h2>Add New Employee</h2>
 
-    <div class="content">
-        <h2> Add new Employee </h2>
+    <form class="employee-form"
+          method="POST"
+          action="AddEmployeeProcess.php"
+          onsubmit="return validateForm();">
 
-        <form class="employee-form" onsubmit="return validateForm();">
-            <div class="form-group">
-                username
-                <input type="text" id="username">
-                Firstname
-                <input type="text" id="firstname">
-                Last Name
-                <input type="text" id="lastname">
-                Email Address 
-                <input type="email" id="email">
-                Departments
-                <select id="department">
-                    <option> Select Department </option>
-                    <option> HR </option>
-                    <option> IT And Technology </option>
-                    <option> Finance </option>
-                    <option> Software </option>
-                </select>
-                Salary
-                <input type="number">
-                Date of birth
-                <input type="date">
-                Working Experience
-                <input type="number">
-                PASSWORD
-                <input type="password" id="password">
-                Confirm PASSWORD
-                <input type="password" id="confirmPassword">
+        Username
+        <input type="text" id="username" name="username">
 
-                <button type="submit" class="submit-btn"> Submit</button>
-</form>
-<div>
+        First Name
+        <input type="text" id="firstname" name="firstname">
+
+        Last Name
+        <input type="text" id="lastname" name="lastname">
+
+        Email Address
+        <input type="email" id="email" name="email">
+
+        Department
+        <select id="department" name="department">
+            <option value="">Select Department</option>
+            <option>HR</option>
+            <option>IT And Technology</option>
+            <option>Finance</option>
+            <option>Software</option>
+        </select>
+
+        Salary
+        <input type="number" id="salary" name="salary">
+
+        Date of Birth
+        <input type="date" id="dob" name="dob">
+
+        Working Experience
+        <input type="number" id="experience" name="experience">
+
+        Password
+        <input type="password" id="password">
+
+        Confirm Password
+        <input type="password" id="confirmPassword">
+
+        <!-- ✅ SUBMIT BUTTON -->
+        <button type="submit" class="submit-btn">Submit</button>
+
+    </form>
+</div>
+
 </body>
 </html>
+
 
 
 

@@ -25,7 +25,7 @@ if (!isset($_SESSION["username"]))
         <ul>
             <li class="active">Dashboard</li>
             <li>
-            <a href="EmplyeeDashboard.php">Employees</a>
+            <a href="EmployeeDashboard.php">Employees</a>
             </li>
             <li>Departments</li>
             <li>Leave Management</li>
