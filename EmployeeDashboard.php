@@ -14,7 +14,6 @@ $employees = $_SESSION["employees"] ?? [];
 
 <div class="container">
 
-    <!-- Sidebar -->
     <aside class="sidebar">
         <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
         <ul>
@@ -28,10 +27,8 @@ $employees = $_SESSION["employees"] ?? [];
         </ul>
     </aside>
 
-    <!-- Main Content -->
     <main class="main">
 
-        <!-- Top Bar -->
         <header class="topbar">
             <div>
                 <h2>Hello, Admin</h2>
@@ -44,7 +41,7 @@ $employees = $_SESSION["employees"] ?? [];
             </div>
         </header>
 
-        <!-- Employee Table -->
+        
         <div class="employee-table-container">
             <h2>Employee Information</h2>
 
@@ -84,34 +81,7 @@ $employees = $_SESSION["employees"] ?? [];
                     </tr>
 
                     <!-- Dynamic Employee from Form -->
-                    <?php if (!empty($employees)): ?>
-    <?php foreach ($employees as $index => $emp): ?>
-    <tr>
-        <td>EMP-<?= 100 + $index ?></td>
-        <td><?= $emp["firstname"] . " " . $emp["lastname"] ?></td>
-        <td><?= date("Y") ?></td>
-        <td><?= $emp["department"] ?></td>
-        <td><?= $emp["experience"] ?></td>
-        <td><?= $emp["email"] ?></td>
-        <td><?= $emp["salary"] ?></td>
-        <td>
-            <form method="post" action="DeleteEmployee.php" style="display:inline;">
-                <input type="hidden" name="index" value="<?= $index ?>">
-                <button type="submit" class="btn delete"
-                        onclick="return confirm('Are you sure you want to delete this employee?');">
-                    Delete
-                </button>
-            </form>
-        </td>
-    </tr>
-    <?php endforeach; ?>
-<?php else: ?>
-    <tr>
-        <td colspan="8" style="text-align:center;color:#777;">
-            No employees added yet.
-        </td>
-    </tr>
-<?php endif; ?>
+                    
 
 
         </div>

@@ -7,10 +7,11 @@
 </head>
 <body>
 
-<div class="contenet">
+<div class="content">
     <h2> Add New Employee </h2>
 
     <form class="employee-form" method="POST" action="AddEmployeeProcess.php" onsubmit="return validateForm();">
+        <div class="form-group">
 
     username
     <input type="text" id="username" name="username">
@@ -40,8 +41,10 @@
     <input type="password" id="confirmPassword">
 
     <button type="submit" class="submit-btn"> Submit </button>
-</form>
+    </div>
 </div>
+</form>
+
 </body>
 </html>
 

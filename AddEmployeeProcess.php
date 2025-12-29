@@ -3,12 +3,12 @@ session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // If employees array does not exist, create it
+    // If employees array does not exist then create it
     if (!isset($_SESSION["employees"])) {
         $_SESSION["employees"] = [];
     }
 
-    // New employee data
+    // insert New employee data
     $newEmployee = [
         "username"   => $_POST["username"],
         "firstname"  => $_POST["firstname"],
