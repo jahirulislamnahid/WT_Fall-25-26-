@@ -95,6 +95,24 @@ $employees = $_SESSION["employees"] ?? [];
                                     <form method= "post" action="DeleteEmployee.php" style="display:inline;">
 
 
+                                    <input type="hidden" name="index" value="<?= $index ?>">
+                <button type="submit" class="btn delete"
+                        onclick="return confirm('Are you sure you want to delete this employee?');">
+                    Delete
+                </button>
+                        </form>
+                        </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td clospan="8" style="text-align:center;color:#777;">
+                                No Employees added yet.
+                    </td>
+                    </tr>
+                    <?php endif; ?>
+
+
 
         </div>
 
