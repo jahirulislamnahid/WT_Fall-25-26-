@@ -10,14 +10,32 @@ if (!isset($_SESSION["departments"][$index])) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION["departments"][$index]["name"] = $_POST["department"];
-    header("Location: Departments.php");
+     header("Location: Departments.php");
     exit();
+
 }
 ?>
 
-<form method="post">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Department</title>
+    <link rel="stylesheet" href="EditDepartment.css">
+</head>
+
+<body>
+
+<form method="post" class="edit-form">
+
     <h2>Edit Department</h2>
+
     <input type="text" name="department"
-           value="<?= $_SESSION["departments"][$index]["name"] ?>" required>
-    <button type="submit">Update</button>
+           value="<?= htmlspecialchars($_SESSION["departments"][$index]["name"]) ?>"
+           required>
+
+    <button type="submit">Update Department</button>
+
 </form>
+
+</body>
+</html>
