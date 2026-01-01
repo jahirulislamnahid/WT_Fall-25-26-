@@ -17,7 +17,9 @@ $employees = $_SESSION["employees"] ?? [];
     <aside class="sidebar">
         <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
         <ul>
-            <li>Dashboard</li>
+            <li>
+            <a href="dashboard.php">Dashboard</a>
+            </li>
             <li class="active">Employees</li>
             <li>Departments</li>
             <li>Leave Management</li>
