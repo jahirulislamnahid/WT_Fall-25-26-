@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="registerCSS.php">
+    <link rel="stylesheet" href="register.CSS">
 
 </head>
 <body>

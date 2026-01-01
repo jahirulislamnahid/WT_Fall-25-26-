@@ -1,19 +1,23 @@
 <?php
 session_start();
 
-if (!isset($_SESSION["username"]))
-{
+
+if (!isset($_SESSION["username"])) {
     header("Location:login.php");
     exit();
 }
 
+$totalEmployees = isset($_SESSION["employees"])
+    ? count($_SESSION["employees"])
+    : 0;
 ?>
 
-<DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Dashboard</title>
-     <link rel="stylesheet" href="AdminCSS.php">
+     <link rel="stylesheet" href="dashboard.CSS">
 </head>
 <body>
 
@@ -56,7 +60,9 @@ if (!isset($_SESSION["username"]))
 
         <section class="cards">
             <div class="card orange">
-                <h3>Total Employees</h3>
+            <h3>Total Employees</h3>
+            <p style="font-size:28px; font-weight:bold;">
+                <?php echo $totalEmployees; ?>
             </div>
 
             <div class="card purple">

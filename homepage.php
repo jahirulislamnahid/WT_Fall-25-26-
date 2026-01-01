@@ -2,10 +2,10 @@
 session_start();
 ?>
 
-<DOCTYPE html>
+<!DOCTYPE html>
     <head>
         <title> Office Management System Home</title>
-        <link rel="stylesheet" href="homeCSS.php">
+        <link rel="stylesheet" href="home.CSS">
 </head>
 <body>
     <h1>Welcome to Neurobyte</h1>
