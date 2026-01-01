@@ -7,7 +7,7 @@ $departments = $_SESSION["departments"] ?? [];
 <html>
     <head>
         <title> Departments </title>
-        <link rel="stylesheet" href="Employee.css">
+        <link rel="stylesheet" href="department.CSS">
 </head>
 
 <div class="container">
@@ -30,15 +30,15 @@ $departments = $_SESSION["departments"] ?? [];
         <a href="Adddepartment.php" class="btn add">+ Add New Department </a>
 </header>
     
-    <table class="employeee-table">
+    <table class="employee-table">
         <thead>
             <tr>
+                <h2> here are the Department Details</h2>
                 <th>Department Name</th>
                 <th>Action</th>
             </tr>
         </thead>
     </tbody>    
-    
             <?php if (!empty($departments)): ?>
                 <?php foreach ($departments as $index => $dept): ?>
                 <tr>
