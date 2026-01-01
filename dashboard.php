@@ -10,6 +10,11 @@ if (!isset($_SESSION["username"])) {
 $totalEmployees = isset($_SESSION["employees"])
     ? count($_SESSION["employees"])
     : 0;
+
+$totalDepartments = isset($_SESSION["departments"])
+    ? count($_SESSION["departments"])
+    : 0;
+
 ?>
 
 
@@ -31,7 +36,9 @@ $totalEmployees = isset($_SESSION["employees"])
             <li>
             <a href="EmployeeDashboard.php">Employees</a>
             </li>
-            <li>Departments</li>
+            <li>
+            <a href="Departments.php">Departments</a>
+            </li>
             <li>Leave Management</li>
             <li>Payroll</li>
             <li>Attendance</li>
@@ -70,8 +77,10 @@ $totalEmployees = isset($_SESSION["employees"])
             </div>
 
             <div class="card green">
-                <h3>Total Departments</h3>
-            </div>
+    <h3>Total Departments</h3>
+    <p><?= $totalDepartments ?></p>
+</div>
+
 
             <div class="card blue">
                 <h3>Pending Approvals</h3>
