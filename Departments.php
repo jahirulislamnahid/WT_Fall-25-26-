@@ -5,41 +5,40 @@ $departments = $_SESSION["departments"] ?? [];
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Departments</title>
-    <link rel="stylesheet" href="Employee.css">
+    <head>
+        <title> Departments </title>
+        <link rel="stylesheet" href="Employee.css">
 </head>
-<body>
 
 <div class="container">
-
-    <!-- Sidebar -->
     <aside class="sidebar">
         <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
         <ul>
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="EmployeeDashboard.php">Employees</a></li>
             <li class="active">Departments</li>
+            <li>Leave Management</li>
+            <li>Payroll</li>
+            <li>Attendance</li>
+            <li>Announcements</li>
         </ul>
     </aside>
-
-    <!-- Main -->
+    
     <main class="main">
 
-        <header class="topbar">
-            <h2>View Departments</h2>
-            <a href="AddDepartment.php" class="btn add">+ Add New Department</a>
-        </header>
-
-        <table class="employee-table">
-            <thead>
-                <tr>
-                    <th>Department Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-
-            <tbody>
+    <header class="topbar">
+        <a href="Adddepartment.php" class="btn add">+ Add New Department </a>
+</header>
+    
+    <table class="employeee-table">
+        <thead>
+            <tr>
+                <th>Department Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    </tbody>    
+    
             <?php if (!empty($departments)): ?>
                 <?php foreach ($departments as $index => $dept): ?>
                 <tr>
