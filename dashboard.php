@@ -34,12 +34,14 @@ $totalDepartments = isset($_SESSION["departments"])
         <ul>
             <li class="active">Dashboard</li>
             <li>
-            <a href="EmployeeDashboard.php">Employees</a>
+            <a href="EmployeeDashboard.php"> Employees</a>
             </li>
             <li>
             <a href="Departments.php">Departments</a>
             </li>
-            <li>Leave Management</li>
+             <li>
+            <a href="ManageLeaves.php">Maange Leave</a>
+            </li>
             <li>Payroll</li>
             <li>Attendance</li>
             <li>Announcements</li>
