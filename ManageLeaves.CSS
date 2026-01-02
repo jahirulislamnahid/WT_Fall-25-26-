@@ -1,59 +1,60 @@
- * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;  
+
 }
 
 body {
-    background: #f7f7f7;
+
+     background: #f0f2f5;
 }
 
 .container {
     display: flex;
 }
 
-/* Sidebar */
 .sidebar {
+
     width: 230px;
-    background: #416cd2;
+    background: #1e2a78; 
     height: 100vh;
     padding: 20px;
-    border-right: 1px solid #ddd;
+    border-right: solid black;
 }
 
 .logo {
-    color: #ff7a00;
-    font-size: 18px;
-    margin-bottom: 30px;
-}
 
-.sidebar ul {
-    list-style: none;
+    color: #ffb400;
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+
 }
 
 .sidebar ul li {
+
     padding: 12px;
     margin-bottom: 8px;
-    cursor: pointer;
     border-radius: 6px;
-    color: #333;
+    color: #fff;
 }
 
 .sidebar ul li:hover,
-.sidebar ul li.active {
-    background: #ff7a00;
-    color: white;
+.sidebar ul li:active {
+    background: #ffb400;
+    color: #1e2a78;
+
 }
 
-/* Main Area */
 .main {
     flex: 1;
     padding: 20px;
 }
 
-/* Top Bar */
 .topbar {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,57 +63,77 @@ body {
 
 .top-actions .btn {
     padding: 8px 15px;
-    border: none;
     border-radius: 6px;
-    cursor: pointer;
     margin-left: 10px;
+    font-weight: bold;
 }
 
 .btn {
     background: #ff7a00;
-    color: white;
-     padding: 8px 15px;
-    border: none;
+    color: #fff;
+    padding: 8px 15px;
     border-radius: 6px;
-    cursor: pointer;
     margin-left: 10px;
+
 }
 
+.btn:hover {
+    background: #ff9500;
+}
 
 .employee-table-container {
     margin: 30px;
-    background: white;
+    background: #dbd8d2;
     padding: 20px;
     border-radius: 10px;
 
 }
 
+
 .employee-table-container h2 {
     margin-bottom: 20px;
-    color: white;
+    color: #333;
 }
 
+/* Table */
 .employee-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
-
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .employee-table thead {
-    background-color: #be236cff;
+    background-color: #1e2a78; /* Dark blue */
     color: #ffffff;
-
 }
 
 .employee-table th,
 .employee-table td {
-    padding: 10px 10px;
-    border: 1px solid #a54141ff;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
     text-align: center;
 }
 
+/* Hover effect for rows */
 .employee-table tbody tr:hover {
-    background-color: #cd7827ff;
+    background-color: #f0f8ff; /* Light blue on hover */
     transition: 0.3s;
+}
+
+/* Status buttons */
+button.approved {
+    background-color: #28a745; /* Green */
+    color: white;
+    cursor: default;
+}
+
+button.pending {
+    background-color: #ffc107; /* Yellow */
+    color: white;
+}
+
+button.approved:hover,
+button.pending:hover {
+    opacity: 0.8;
 }

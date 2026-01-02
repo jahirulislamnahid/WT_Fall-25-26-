@@ -10,7 +10,7 @@ if (!isset($_SESSION['leaves']) || !is_array($_SESSION['leaves'])) {
 <html>
     <head>
         <title> Leave Management </title>
-        <link rel="stylesheet" href="Employee.css">
+        <link rel="stylesheet" href="ManageLeaves.CSS">
 </head>
 
 <body>
