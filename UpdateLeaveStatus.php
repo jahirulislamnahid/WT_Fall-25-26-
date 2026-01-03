@@ -1,16 +1,16 @@
-
 <?php
 session_start();
 
-if (isset($_POST['index'], $_POST['status'])) {
+if (isset($_POST['index'], $_POST['ststus'])) {
     $index = (int) $_POST['index'];
-    $status = $_POST['status'];
+    $index = $_POST['index'];
 
     if (isset($_SESSION['leaves'][$index])) {
-        $_SESSION['leaves'][$index]['status'] = $status;
+        $_SESSION['leaves'][$index]['ststus'] = $status;
     }
+
 }
 
-header("Location: ManageLeaves.php");
+header("location: ManageLeaves.php");
 exit;
 ?>
