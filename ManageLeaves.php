@@ -24,10 +24,10 @@ if (!isset($_SESSION['leaves']) || !is_array($_SESSION['leaves'])) {
         <li><a href="Departments.php">Departments</a></li>
         <li class="active">Leave Management</li>
         <li>Payroll</li>
-            <li>Attendance</li>
-            <li>Announcements</li>
-        </ul>
-</aside>
+        <li>Attendance</li>
+        <li>Announcements</li>
+    </ul>
+    </aside>
 
 <main class="main">
     <header class="topbar">

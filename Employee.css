@@ -13,7 +13,7 @@ body {
     display: flex;
 }
 
-/* Sidebar */
+
 .sidebar {
     width: 230px;
     background: #416cd2;
@@ -46,13 +46,13 @@ body {
     color: white;
 }
 
-/* Main Area */
+
 .main {
     flex: 1;
     padding: 20px;
 }
 
-/* Top Bar */
+
 .topbar {
     display: flex;
     justify-content: space-between;

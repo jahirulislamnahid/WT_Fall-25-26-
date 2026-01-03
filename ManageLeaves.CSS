@@ -8,7 +8,7 @@
 
 body {
 
-     background: #f0f2f5;
+     background: #d5d7de;
 }
 
 .container {
@@ -78,62 +78,51 @@ body {
 }
 
 .btn:hover {
-    background: #ff9500;
+    background: #ee0e0e;
 }
 
 .employee-table-container {
     margin: 30px;
-    background: #dbd8d2;
+    background: #f9f8f6;
     padding: 20px;
     border-radius: 10px;
 
 }
-
 
 .employee-table-container h2 {
     margin-bottom: 20px;
     color: #333;
 }
 
-/* Table */
 .employee-table {
+
     width: 100%;
-    border-collapse: collapse;
     font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: #333;
 }
 
 .employee-table thead {
-    background-color: #1e2a78; /* Dark blue */
-    color: #ffffff;
+    background-color: #1e2a78;
+    color: #ddd;
 }
 
 .employee-table th,
 .employee-table td {
     padding: 12px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 2px;
     text-align: center;
 }
 
-/* Hover effect for rows */
 .employee-table tbody tr:hover {
-    background-color: #f0f8ff; /* Light blue on hover */
-    transition: 0.3s;
+    background-color: #5284d0;
 }
 
-/* Status buttons */
 button.approved {
-    background-color: #28a745; /* Green */
-    color: white;
-    cursor: default;
+    background-color: #56e409;
+    color: #ddd;
 }
 
 button.pending {
-    background-color: #ffc107; /* Yellow */
-    color: white;
-}
-
-button.approved:hover,
-button.pending:hover {
-    opacity: 0.8;
+    background-color: #ff7a00;
+    color: #f0f2f5;
 }
