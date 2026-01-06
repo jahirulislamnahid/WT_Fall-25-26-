@@ -13,7 +13,26 @@ $totalEmployees = isset($_SESSION["employees"])
 
 $totalDepartments = isset($_SESSION["departments"])
     ? count($_SESSION["departments"])
+    
     : 0;
+// Leave stats
+$leaves = $_SESSION["leaves"] ?? [];
+$today = date("Y-m-d");
+
+$onLeaveToday = 0;
+$pendingApprovals = 0;
+
+foreach ($leaves as $leave) {
+    // Count approved leaves for today
+    if ($leave['status'] === "Approved" && $today >= $leave['start_date'] && $today <= $leave['end_date']) {
+        $onLeaveToday++;
+    }
+    // Count pending leaves
+    if ($leave['status'] === "Pending") {
+        $pendingApprovals++;
+    }
+}
+
 
 ?>
 
@@ -32,9 +51,12 @@ $totalDepartments = isset($_SESSION["departments"])
     <aside class="sidebar">
         <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
         <ul>
+            <div class="top-actions">
             <li class="active">Dashboard</li>
             <li>
-            <a href="EmployeeDashboard.php"> Employees</a>
+            <a href="EmployeeDashboard.php">
+                <button class="btn add">Employee</button>
+                </a>
             </li>
             <li>
             <a href="Departments.php">Departments</a>
@@ -45,6 +67,7 @@ $totalDepartments = isset($_SESSION["departments"])
             <li>Payroll</li>
             <li>Attendance</li>
             <li>Announcements</li>
+            </div>
         </ul>
     </aside>
 
@@ -76,6 +99,7 @@ $totalDepartments = isset($_SESSION["departments"])
 
             <div class="card purple">
                 <h3>On Leave Today</h3>
+             <p>   <?= $onLeaveToday ?> </p>
             </div>
 
             <div class="card green">
@@ -86,6 +110,7 @@ $totalDepartments = isset($_SESSION["departments"])
 
             <div class="card blue">
                 <h3>Pending Approvals</h3>
+                <p><?= $pendingApprovals ?></p>
             </div>
         </section>
 
@@ -102,7 +127,7 @@ $totalDepartments = isset($_SESSION["departments"])
 
             <div class="small-card">
                 <h4>Approved Leave</h4>
-                <p>0</p>
+                <p><?= array_reduce($leaves, fn($carry, $l) => $carry + ($l['status'] === "Approved" ? 1 : 0), 0) ?></p>
             </div>
 
             <div class="small-card">

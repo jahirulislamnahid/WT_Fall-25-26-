@@ -1,4 +1,41 @@
 <?php
+include "db.php";
+ 
+$success=$error="";
+if($_SERVER["REQUEST_METHOD"]== "POST")
+{
+$username=$_POST["username"];
+$password=$_POST["password"];
+ 
+if(empty($username)||empty($password))
+{
+$error="All the field must be fill_up";
+}
+ 
+else{
+$hassPassword= password_hash($password,PASSWORD_DEFAULT);
+ 
+$sql= "INSERT INTO users(username,password) VALUES ('$username','$hassPassword')";
+if($conn->query($sql))
+{
+    $success="Registration Complete you can do the login";
+}
+ 
+else{
+ 
+    $error = "Error: .".$conn->error;
+}
+ 
+ 
+}
+ 
+ 
+ 
+}
+ 
+?>
+ 
+<?php
 session_start();
 if (isset($_SESSION["username"]))
 {

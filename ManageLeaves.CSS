@@ -8,7 +8,8 @@
 
 body {
 
-     background: #d5d7de;
+     background: #c7d8dc;
+     color: #333;
 }
 
 .container {
@@ -30,6 +31,8 @@ body {
     font-size: 20px;
     margin-bottom: 30px;
     font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
 
 }
 
@@ -42,9 +45,10 @@ body {
 }
 
 .sidebar ul li:hover,
-.sidebar ul li:active {
+.sidebar ul li.active {
     background: #ffb400;
     color: #1e2a78;
+    font-weight: 600;
 
 }
 
@@ -114,7 +118,7 @@ body {
 }
 
 .employee-table tbody tr:hover {
-    background-color: #5284d0;
+    background-color: hsl(249, 55%, 65%);
 }
 
 button.approved {
@@ -126,3 +130,5 @@ button.pending {
     background-color: #ff7a00;
     color: #f0f2f5;
 }
+
+

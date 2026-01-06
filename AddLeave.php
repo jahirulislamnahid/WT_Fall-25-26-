@@ -1,80 +1,17 @@
-<?php
-session_start();
-?>
 
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Add Leave</title>
+    <link rel="stylesheet" href="AddLeave.CSS">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
 
-        .leave-form {
-            background: #fff;
-            padding: 25px;
-            width: 400px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        .leave-form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .leave-form label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .leave-form input,
-        .leave-form select,
-        .leave-form textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .leave-form textarea {
-            resize: none;
-            height: 80px;
-        }
-
-        .leave-form button {
-            margin-top: 15px;
-            width: 100%;
-            padding: 10px;
-            background: #16a085;
-            border: none;
-            color: #fff;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .leave-form button:hover {
-            background: #13856b;
-        }
-    </style>
 </head>
 <body>
 
 <div class="leave-form">
     <h2>Add Leave</h2>
 
-    <form action="AddLeaveProcess.php" method="post">
+    <form action="AddLeaveProcess.php" method="post" onsubmit="return validateForm();">
 
         <label for="emp_id">Employee ID</label>
         <input type="text" name="emp_id" id="emp_id" required>

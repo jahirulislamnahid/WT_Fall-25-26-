@@ -1,9 +1,7 @@
 <?php
 session_start();
+$leaves = $_SESSION["leaves"] ?? [];
 
-if (!isset($_SESSION['leaves']) || !is_array($_SESSION['leaves'])) {
-    $_SESSION['leaves'] = [];
-}
 ?>
 
 <!DOCTYPE html>
