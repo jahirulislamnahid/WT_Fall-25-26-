@@ -1,28 +1,35 @@
+
 <?php
-session_start();
+include "db.php";
+include "AddEmployeeValidation.php";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // If employees array does not exist then create it
-    if (!isset($_SESSION["employees"])) {
-        $_SESSION["employees"] = [];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $username   = trim($_POST["username"]);
+    $firstname  = trim($_POST["firstname"]);
+    $lastname   = trim($_POST["lastname"]);
+    $email      = trim($_POST["email"]);
+    $department = $_POST["department"];
+    $salary     = $_POST["salary"];
+    $dob        = $_POST["dob"];
+    $experience = $_POST["experience"];
+    $password   = $_POST["password"];
+    $confirmPwd = $_POST["confirmPassword"];
+
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = "INSERT INTO employees
+            (username, firstname, lastname, email, department, salary, dob, experience, password)
+            VALUES
+            ('$username', '$firstname', '$lastname', '$email', '$department',
+             '$salary', '$dob', '$experience', '$hashedPassword')";
+
+    if (mysqli_query($conn, $sql)) {
+        header("Location: EmployeeDashboard.php");
+        exit();
+    } else {
+        die("Error inserting employee: " . mysqli_error($conn));
     }
-
-    // insert New employee data
-    $newEmployee = [
-        "username"   => $_POST["username"],
-        "firstname"  => $_POST["firstname"],
-        "lastname"   => $_POST["lastname"],
-        "email"      => $_POST["email"],
-        "department" => $_POST["department"],
-        "salary"     => $_POST["salary"],
-        "dob"        => $_POST["dob"],
-        "experience" => $_POST["experience"]
-    ];
-
-    // Add employee to array
-    $_SESSION["employees"][] = $newEmployee;
-
-    header("Location: EmployeeDashboard.php");
-    exit();
 }
+?>

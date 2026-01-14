@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Add New Employee </title>
-        <link rel="stylesheet" href="AddEmployee.css">
-        <script src="AddEmployeeValidation.js"></script>
+<head>
+    <title>Add New Employee</title>
+    <link rel="stylesheet" href="AddEmployee.css">
 </head>
 <body>
 
 <div class="content">
-    <h2> Add New Employee </h2>
+    <h2>Add New Employee</h2>
 
-    <form class="employee-form" method="POST" action="AddEmployeeProcess.php" onsubmit="return validateForm();">
-        <div class="form-group">
+    <form class="employee-form" method="POST" action="AddEmployeeProcess.php">
 
-    username
-    <input type="text" id="username" name="username">
-    First name
-    <input type="text" id="firstname" name="firstname">
-    Last name
-    <input type="text" id="lastname" name="lastname">
-    Email Address 
-    <input type="text" id="email" name="email">
-    Department
-    <select id="department" name="department">
-        <option value="">Select Department</option>
-        <option>HR</option>
-        <option>IT and Technology</option>
-        <option>Finance</option>
-        <option>Software</option>
-</select>
-    Salary
-    <input type="number" id="salary" name="salary">
-    Date of Birth
-    <input type="date" id="dob" name="dob">
-    Working Experience [Years]
-    <input type="number" id="experience" name="experience">
-    PASSWORD
-    <input type="password" id="password">
-    Confirm PASSWORD
-    <input type="password" id="confirmPassword">
+        <label>Username</label>
+        <input type="text" name="username" required>
 
-    <button type="submit" class="submit-btn"> Submit </button>
-    </div>
+        <label>First Name</label>
+        <input type="text" name="firstname" required>
+
+        <label>Last Name</label>
+        <input type="text" name="lastname" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Department</label>
+        <select name="department" required>
+            <option value="">Select Department</option>
+            <option value="HR">HR</option>
+            <option value="IT and Technology">IT and Technology</option>
+            <option value="Finance">Finance</option>
+            <option value="Software">Software</option>
+        </select>
+
+        <label>Salary</label>
+        <input type="number" name="salary" min="0" required>
+
+        <label>Date of Birth</label>
+        <input type="date" name="dob" required>
+
+        <label>Experience (Years)</label>
+        <input type="number" name="experience" min="0" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <label>Confirm Password</label>
+        <input type="password" name="confirmPassword" required>
+
+        <button type="submit" class="submit-btn">Submit</button>
+
+    </form>
 </div>
-</form>
 
 </body>
 </html>
-
-

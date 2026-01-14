@@ -1,14 +1,31 @@
 <?php
+include "db.php";
 session_start();
-$departments = $_SESSION["departments"] ?? [];
+
+if (!isset($_SESSION["username"])) {
+    header("Location: login.php");
+    exit();
+}
+
+/* FETCH DEPARTMENTS FROM DATABASE */
+$result = mysqli_query(
+    $conn,
+    "SELECT * FROM departments ORDER BY department_name ASC"
+);
+
+if (!$result) {
+    die("Database query failed: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Departments </title>
-        <link rel="stylesheet" href="department.CSS">
+<head>
+    <title>Departments</title>
+    <link rel="stylesheet" href="department.CSS">
 </head>
+
+<body>
 
 <div class="container">
     <aside class="sidebar">
@@ -23,40 +40,42 @@ $departments = $_SESSION["departments"] ?? [];
             <li>Announcements</li>
         </ul>
     </aside>
-    
+
     <main class="main">
 
-    <header class="topbar">
-        <a href="Adddepartment.php" class="btn add">+ Add New Department </a>
-</header>
-    
-    <table class="employee-table">
-        <thead>
-            <tr>
-                <h2> here are the Department Details</h2>
-                <th>Department Name</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-    </tbody>    
-            <?php if (!empty($departments)): ?>
-                <?php foreach ($departments as $index => $dept): ?>
+        <header class="topbar">
+            <a href="Adddepartment.php" class="btn add">+ Add New Department</a>
+        </header>
+
+        <table class="employee-table">
+            <thead>
                 <tr>
-                    <td><?= htmlspecialchars($dept["name"]) ?></td>
+                    <th>Department Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <?php if (mysqli_num_rows($result) > 0): ?>
+                <?php while ($dept = mysqli_fetch_assoc($result)): ?>
+                <tr>
+                    <td><?= htmlspecialchars($dept["department_name"]) ?></td>
                     <td>
-                        <a href="EditDepartment.php?index=<?= $index ?>" class="btn edit">Edit</a>
+                        <a href="EditDepartment.php?name=<?= urlencode($dept["department_name"]) ?>"
+                           class="btn edit">Edit</a>
 
                         <form method="post" action="DeleteDepartment.php" style="display:inline;">
-                            <input type="hidden" name="index" value="<?= $index ?>">
+                            <input type="hidden" name="department_name"
+                                   value="<?= htmlspecialchars($dept["department_name"]) ?>">
                             <button type="submit"
-                                onclick="return confirm('Delete this department?');"
-                                class="btn delete">
+                                    onclick="return confirm('Delete this department?');"
+                                    class="btn delete">
                                 Delete
                             </button>
                         </form>
                     </td>
                 </tr>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
             <?php else: ?>
                 <tr>
                     <td colspan="2" style="text-align:center;">No departments found</td>

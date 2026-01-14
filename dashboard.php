@@ -1,21 +1,33 @@
 <?php
+include "db.php"; // Your database connection file
+
+
 session_start();
-
-
 if (!isset($_SESSION["username"])) {
-    header("Location:login.php");
-    exit();
+    header("Location: login.php");
+    exir();
 }
 
-$totalEmployees = isset($_SESSION["employees"])
-    ? count($_SESSION["employees"])
-    : 0;
 
-$totalDepartments = isset($_SESSION["departments"])
-    ? count($_SESSION["departments"])
-    
-    : 0;
-// Leave stats
+$result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM employees");
+if (!$result) {
+    die ("Database query failed: " .mysqli_erroe($conn));
+}
+$row = mysqli_fetch_assoc($result);
+$totalEmployees = $row['total'] ?? 0;
+
+
+$resultDept = mysqli_query($conn, "SELECT COUNT(*) AS total FROM departments");
+if (!$resultDept) {
+    die("Database query failed: " . mysqli_error($conn));
+}
+$rowDept = mysqli_fetch_assoc($resultDept);
+$totalDepartments = $rowDept['total'] ?? 0;
+
+
+// -----------------------
+// Leave stats (keep session-based)
+// -----------------------
 $leaves = $_SESSION["leaves"] ?? [];
 $today = date("Y-m-d");
 
@@ -32,8 +44,6 @@ foreach ($leaves as $leave) {
         $pendingApprovals++;
     }
 }
-
-
 ?>
 
 
@@ -127,7 +137,6 @@ foreach ($leaves as $leave) {
 
             <div class="small-card">
                 <h4>Approved Leave</h4>
-                <p><?= array_reduce($leaves, fn($carry, $l) => $carry + ($l['status'] === "Approved" ? 1 : 0), 0) ?></p>
             </div>
 
             <div class="small-card">

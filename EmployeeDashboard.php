@@ -1,7 +1,17 @@
 <?php
-session_start();
-$employees = $_SESSION["employees"] ?? [];
+include "db.php";
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_id'])) {
+    $username = $_POST['delete_id'];
+    mysqli_query($conn, "DELETE FROM employees WHERE username='$username'");
+    header("Location: EmployeeDashboard.php");
+    exit();
+}
+
+$result = mysqli_query($conn, "SELECT * FROM employees ORDER BY username ASC");
+if (!$result) {
+    die("Database query failed: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,23 +21,21 @@ $employees = $_SESSION["employees"] ?? [];
     <link rel="stylesheet" href="Employee.css">
 </head>
 <body>
-
+   
 <div class="container">
+<aside class="sidebar">
+    <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
+    <ul class="menu">
+        <li><a href="dashboard.php" class="menu-btn">Dashboard</a></li>
+        <li><a href="employees.php" class="menu-btn active">Employees</a></li>
+        <li><a href="departments.php" class="menu-btn">Departments</a></li>
+        <li><a href="leave.php" class="menu-btn">Leave Management</a></li>
+        <li><a href="payroll.php" class="menu-btn">Payroll</a></li>
+        <li><a href="attendance.php" class="menu-btn">Attendance</a></li>
+        <li><a href="announcements.php" class="menu-btn">Announcements</a></li>
+    </ul>
+</aside>
 
-    <aside class="sidebar">
-        <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
-        <ul>
-            <li>
-            <a href="dashboard.php">Dashboard</a>
-            </li>
-            <li class="active">Employees</li>
-            <li>Departments</li>
-            <li>Leave Management</li>
-            <li>Payroll</li>
-            <li>Attendance</li>
-            <li>Announcements</li>
-        </ul>
-    </aside>
 
     <main class="main">
 
@@ -43,79 +51,54 @@ $employees = $_SESSION["employees"] ?? [];
             </div>
         </header>
 
-        
         <div class="employee-table-container">
             <h2>Employee Information</h2>
 
             <table class="employee-table">
                 <thead>
                     <tr>
-                        <th>Employee ID</th>
+                        <th>Username</th>
                         <th>Name</th>
-                        <th>Joining Year</th>
+                        <th>Date of Birth</th>
                         <th>Department</th>
                         <th>Experience (Years)</th>
                         <th>Email</th>
                         <th>Salary</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <!-- Static Employees -->
-                    <tr>
-                        <td>EMP-001</td>
-                        <td>Rahim Uddin</td>
-                        <td>2021</td>
-                        <td>IT</td>
-                        <td>3</td>
-                        <td>rahim@gmail.com</td>
-                        <td>50,000</td>
-                    </tr>
-
-                    <tr>
-                        <td>EMP-002</td>
-                        <td>Bkash Ahamed</td>
-                        <td>2023</td>
-                        <td>Finance</td>
-                        <td>2</td>
-                        <td>bkash@gmail.com</td>
-                        <td>45,000</td>
-                    </tr>
-
-                    <!-- Dynamic Employee from Form -->
-                    <?php if (!empty($employees)): ?>
-                        <?php foreach ($employees as $index => $emp): ?>
-                            <tr>
-                                <td>EMP-<?= 100+ $index ?></td>
-                                <td><?= $emp["firstname"] . "" . $emp["lastname"] ?></td>
-                                <td><?= date("Y") ?></td>
-                                <td><?= $emp["department"] ?></td>
-                                <td><?= $emp["experience"] ?></td>
-                                <td><?= $emp["email"] ?></td>
-                                <td><?= $emp["salary"] ?></td>
-                                <td>
-                                    <form method= "post" action="DeleteEmployee.php" style="display:inline;">
-
-
-                                    <input type="hidden" name="index" value="<?= $index ?>">
-                <button type="submit" class="btn delete"
-                        onclick="return confirm('Are you sure you want to delete this employee?');">
-                    Delete
-                </button>
-                        </form>
-                        </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
+                <?php if (mysqli_num_rows($result) > 0): ?>
+                    <?php while ($emp = mysqli_fetch_assoc($result)): ?>
                         <tr>
-                            <td clospan="8" style="text-align:center;color:#777;">
-                                No Employees added yet.
-                    </td>
+                            <td><?= $emp["username"] ?></td>
+                            <td><?= $emp["firstname"] . " " . $emp["lastname"] ?></td>
+                            <td><?= $emp["dob"] ?></td>
+                            <td><?= $emp["department"] ?></td>
+                            <td><?= $emp["experience"] ?></td>
+                            <td><?= $emp["email"] ?></td>
+                            <td><?= $emp["salary"] ?></td>
+                            <td>
+                                <form method="post" action="EmployeeDashboard.php" style="display:inline;">
+                                    <input type="hidden" name="delete_id" value="<?= $emp["username"] ?>">
+                                    <button type="submit" class="btn delete"
+                                            onclick="return confirm('Are you sure you want to delete this employee?');">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="8" style="text-align:center;color:#777;">
+                            No employees found.
+                        </td>
                     </tr>
-                    <?php endif; ?>
-
-
-
+                <?php endif; ?>
+                </tbody>
+            </table>
         </div>
 
     </main>
@@ -123,8 +106,3 @@ $employees = $_SESSION["employees"] ?? [];
 
 </body>
 </html>
-
-
-
-
-

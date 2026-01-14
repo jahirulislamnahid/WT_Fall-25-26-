@@ -1,18 +1,46 @@
 <?php
+include "db.php";
 session_start();
 
-$index = $_GET["index"] ?? null;
+if (!isset($_SESSION["username"])) {
+    header("Location: login.php");
+    exit();
+}
 
-if (!isset($_SESSION["departments"][$index])) {
+/* GET DEPARTMENT NAME */
+$department = $_GET["name"] ?? null;
+
+if (!$department) {
     header("Location: Departments.php");
     exit();
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $_SESSION["departments"][$index]["name"] = $_POST["department"];
-     header("Location: Departments.php");
-    exit();
+/* FETCH DEPARTMENT */
+$result = mysqli_query(
+    $conn,
+    "SELECT * FROM departments WHERE department_name='$department'"
+);
 
+if (mysqli_num_rows($result) === 0) {
+    header("Location: Departments.php");
+    exit();
+}
+
+$dept = mysqli_fetch_assoc($result);
+
+/* UPDATE DEPARTMENT */
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $newDepartment = $_POST["department"];
+
+    mysqli_query(
+        $conn,
+        "UPDATE departments 
+         SET department_name='$newDepartment' 
+         WHERE department_name='$department'"
+    );
+
+    header("Location: Departments.php");
+    exit();
 }
 ?>
 
@@ -29,8 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <h2>Edit Department</h2>
 
-    <input type="text" name="department"
-           value="<?= htmlspecialchars($_SESSION["departments"][$index]["name"]) ?>"
+    <input type="text"
+           name="department"
+           value="<?= htmlspecialchars($dept["department_name"]) ?>"
            required>
 
     <button type="submit">Update Department</button>
