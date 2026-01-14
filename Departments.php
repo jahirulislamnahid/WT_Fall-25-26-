@@ -1,18 +1,8 @@
 <?php
 include "db.php";
-session_start();
 
-if (!isset($_SESSION["username"])) {
-    header("Location: login.php");
-    exit();
-}
-
-/* FETCH DEPARTMENTS FROM DATABASE */
-$result = mysqli_query(
-    $conn,
-    "SELECT * FROM departments ORDER BY department_name ASC"
-);
-
+/* FETCH DEPARTMENTS */
+$result = mysqli_query($conn, "SELECT * FROM departments ORDER BY department_name ASC");
 if (!$result) {
     die("Database query failed: " . mysqli_error($conn));
 }
@@ -22,9 +12,8 @@ if (!$result) {
 <html>
 <head>
     <title>Departments</title>
-    <link rel="stylesheet" href="department.CSS">
+    <link rel="stylesheet" href="department.css">
 </head>
-
 <body>
 
 <div class="container">
@@ -42,7 +31,6 @@ if (!$result) {
     </aside>
 
     <main class="main">
-
         <header class="topbar">
             <a href="Adddepartment.php" class="btn add">+ Add New Department</a>
         </header>
@@ -57,24 +45,20 @@ if (!$result) {
 
             <tbody>
             <?php if (mysqli_num_rows($result) > 0): ?>
-                <?php while ($dept = mysqli_fetch_assoc($result)): ?>
-                <tr>
-                    <td><?= htmlspecialchars($dept["department_name"]) ?></td>
-                    <td>
-                        <a href="EditDepartment.php?name=<?= urlencode($dept["department_name"]) ?>"
-                           class="btn edit">Edit</a>
+                <?php while ($dept = mysqli_fetch_assoc($result)):
+                    $rowId = md5($dept['department_name']); ?>
+                    <tr id="row<?= $rowId ?>">
+                        <td><?= htmlspecialchars($dept["department_name"]) ?></td>
+                        <td>
+                            <a href="EditDepartment.php?name=<?= urlencode($dept["department_name"]) ?>" class="btn edit">Edit</a>
 
-                        <form method="post" action="DeleteDepartment.php" style="display:inline;">
-                            <input type="hidden" name="department_name"
-                                   value="<?= htmlspecialchars($dept["department_name"]) ?>">
-                            <button type="submit"
-                                    onclick="return confirm('Delete this department?');"
-                                    class="btn delete">
+                            <!-- DELETE BUTTON -->
+                            <button type="button" class="btn delete"
+                                onclick="deleteDepartment('<?= htmlspecialchars($dept['department_name']) ?>', '<?= $rowId ?>')">
                                 Delete
                             </button>
-                        </form>
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 <?php endwhile; ?>
             <?php else: ?>
                 <tr>
@@ -83,9 +67,37 @@ if (!$result) {
             <?php endif; ?>
             </tbody>
         </table>
-
     </main>
 </div>
+
+<script>
+    function deleteDepartment(department, rowId) {
+
+       if (!confirm("Delete this department?")) {
+        return;
+       }
+
+       var xhttp = new XMLHttpRequest();
+
+       xhttp.onreadystatechange = function () {
+        if(this.readyState === 4) {
+            if (this.status === 200) {
+                let response = this.responseText.trim();
+                if (response == "success") {
+                    document.getElementById("row" + rowId).remove();
+                }
+                else{
+                    alert("Delete Failed: " + response);
+                }
+            }
+        }
+     };
+     xhttp.open("POST", "DeleteDepartment.php", true);
+     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+     xhttp.send("department_name=" + encodeURIComponent(department));
+
+    }
+</script>
 
 </body>
 </html>

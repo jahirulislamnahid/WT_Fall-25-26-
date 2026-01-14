@@ -1,3 +1,5 @@
+
+
 function validateForm() {
 
     let username = document.getElementById("username").value.trim();

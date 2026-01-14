@@ -1,30 +1,22 @@
 <?php
 include "db.php";
-session_start();
 
-if (!isset($_SESSION["username"])) {
-    header("Location: login.php");
-    exit();
+if (!isset($_POST['department_name'])) {
+    echo "missing";
+    exit;
 }
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+$department = mysqli_real_escape_string($conn, $_POST['department_name']);
 
-    if (!isset($_POST["department_name"])) {
-        header("Location: Departments.php");
-        exit();
+$sql = "DELETE FROM departments WHERE department_name='$department'";
+
+if (mysqli_query($conn, $sql)) {
+    if (mysqli_affected_rows($conn) > 0) {
+        echo "success";
+    } else {
+        echo "not_found";
     }
-
-    $department = mysqli_real_escape_string($conn, $_POST["department_name"]);
-
-    mysqli_query(
-        $conn,
-        "DELETE FROM departments WHERE department_name='$department'"
-    );
-
-    header("Location: Departments.php");
-    exit();
+} else {
+    echo "error";
 }
-
-header("Location: Departments.php");
-exit();
-
+?>
