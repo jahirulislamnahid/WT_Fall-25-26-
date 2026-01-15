@@ -19,6 +19,23 @@ if (mysqli_num_rows($result) === 0) {
 }
 $dept = mysqli_fetch_assoc($result);
 
+//update dept
+if ($_SERVER["REQUEST_METHOD"] === "POST")  {
+    $newDepartment = $_POST["department"];
+
+    $newDepartmentEscaped = mysqli_real_escape_string($conn, $newDepartment);
+    $departmentEscaped = mysqli_real_escape_string($conn, $department);
+
+    mysqli_query(
+        $conn,
+        "UPDATE departments
+        SET department_name = '$newDepartmentEscaped'
+        WHERE department_name = '$departmentEscaped'"
+    );
+
+    header("Location: Departments.php");
+    exit();
+}
 
 
 ?>
