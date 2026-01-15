@@ -19,19 +19,7 @@ if (mysqli_num_rows($result) === 0) {
 }
 $dept = mysqli_fetch_assoc($result);
 
-/* UPDATE DEPARTMENT */
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $newDepartment = $_POST["department"];
 
-    mysqli_query(
-        "UPDATE departments
-        SET department_name='$newDepartment'
-        WHERE department_name='department'"
-    );
-
-    header("Location: Departments.php");
-    exit();
-}
 
 ?>
 
