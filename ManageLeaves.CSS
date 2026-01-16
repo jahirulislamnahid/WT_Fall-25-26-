@@ -150,7 +150,7 @@ body {
 }
 
 .btn-pending {
-    background: #ffb400;
+    background: #ffb302;
     color: #f9f8f6;
     border: none;
     padding: 6px 12px;
@@ -159,12 +159,12 @@ body {
 }
 
 .btn-pending:hover {
-    background: #ff7a00;
+    background: #ec07e0;
 
 }
 
 .btn-delete {
-    background: #ee0e0e;
+    background: #f33804;
     color: #fff;
     border: none;
     padding: 6px 12px;
@@ -173,7 +173,8 @@ body {
 }
 
 .btn-delete:hover {
-    background: #ee0e0e;
+    background: #08deee;
+    color: black;
 }
 
 .approved {

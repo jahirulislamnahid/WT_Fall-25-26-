@@ -1,19 +1,20 @@
 <?php
 include "db.php";
 
-// Approve
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['approve_emp_id'])) {
-    $emp_id = $_POST['approve_emp_id'];
-    mysqli_query($conn, "UPDATE leaves SET status='Approved' WHERE emp_id='$emp_id'");
+    $emp_id = mysqli_real_escape_string($conn, $_POST['approve_emp_id']);
+    $query = mysqli_query($conn, "UPDATE leaves SET status='Approved' WHERE emp_id='$emp_id'");
+    echo $query ? "success" : "error";
+    exit;
 }
 
-// Delete 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_emp_id'])) {
-    $emp_id = $_POST['delete_emp_id'];
-    mysqli_query($conn, "DELETE FROM leaves WHERE emp_id='$emp_id'");
+    $emp_id = mysqli_real_escape_string($conn, $_POST['delete_emp_id']);
+    $query = mysqli_query($conn, "DELETE FROM leaves WHERE emp_id='$emp_id'");
+    echo $query ? "success" : "error";
+    exit;
 }
 
-// see leaves from database to my webpage
 $result = mysqli_query($conn, "
     SELECT emp_id, emp_name, leave_type, department, start_date, end_date, status
     FROM leaves
@@ -21,7 +22,7 @@ $result = mysqli_query($conn, "
 ");
 
 if (!$result) {
-    die("Database query failed: " .mysqli_error($conn));
+    die("Database query failed: " . mysqli_error($conn));
 }
 
 $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -31,11 +32,12 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <html>
 <head>
     <title>Leave Management</title>
-    <link rel="stylesheet" href="ManageLeaves.CSS?v=1.0">
+    <link rel="stylesheet" href="ManageLeaves.css?v=1.0">
 </head>
 
 <body>
 <div class="container">
+
     <aside class="sidebar">
         <h2 class="logo">Neurobyte <br> Technologies <br> LTD</h2>
         <ul>
@@ -53,12 +55,12 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <header class="topbar">
             <div>
                 <h2>Hello, Admin</h2>
-                <p class="word">Manage Employee Leaves</p>
+                <p>Manage Employee Leaves</p>
             </div>
 
             <div class="top-actions">
-                <a href="AddLeave.php" class="btn add">+ Add Leave</a>
-                <a href="logout.php" class="btn logout">Logout</a>
+                <a href="AddLeave.php" class="btn">+ Add Leave</a>
+                <a href="logout.php" class="btn">Logout</a>
             </div>
         </header>
 
@@ -68,7 +70,7 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <table class="employee-table">
                 <thead>
                     <tr>
-                        <th>Serial No</th>
+                        <th>Serial</th>
                         <th>Emp ID</th>
                         <th>Name</th>
                         <th>Leave Type</th>
@@ -82,9 +84,9 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <?php if (!empty($leaves)): ?>
                     <?php foreach ($leaves as $i => $leave): ?>
                         <?php
-                            $days = (int)((strtotime($leave['end_date']) - strtotime($leave['start_date'])) / (60*60*24) + 1);
+                            $days = (int)((strtotime($leave['end_date']) - strtotime($leave['start_date'])) / 86400 + 1);
                         ?>
-                        <tr>
+                        <tr id="row<?= $i ?>">
                             <td><?= $i + 1 ?></td>
                             <td><?= htmlspecialchars($leave['emp_id']) ?></td>
                             <td><?= htmlspecialchars($leave['emp_name']) ?></td>
@@ -93,27 +95,26 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <td><?= $days ?></td>
                             <td>
                                 <?php if ($leave['status'] === 'Pending'): ?>
-                                    <form method="POST" style="display:inline;">
-                                        <input type="hidden" name="approve_emp_id" value="<?= $leave['emp_id'] ?>">
-                                        <button type="submit" class="btn-pending">Approve</button>
-                                    </form>
+                                    <button class="btn-pending"
+                                        onclick="approveLeave('<?= $leave['emp_id'] ?>', <?= $i ?>)">
+                                        Pending
+                                    </button>
                                 <?php else: ?>
                                     <span class="approved">Approved</span>
                                 <?php endif; ?>
 
-                                <form method="POST" style="display:inline;">
-                                    <input type="hidden" name="delete_emp_id" value="<?= $leave['emp_id'] ?>">
-                                    <button type="submit" class="btn-delete"
-                                            onclick="return confirm('Are you sure you want to delete this leave?')">
-                                        Delete
-                                    </button>
-                                </form>
+                                <button class="btn-delete"
+                                    onclick="deleteLeave('<?= $leave['emp_id'] ?>', <?= $i ?>)">
+                                    Delete
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="7" style="text-align:center;color:#777;">No leaves found.</td>
+                        <td colspan="7" style="text-align:center;color:#777;">
+                            No leaves found.
+                        </td>
                     </tr>
                 <?php endif; ?>
                 </tbody>
@@ -121,5 +122,33 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </div>
     </main>
 </div>
+
+<script>
+function approveLeave(empId, rowId) {
+    if (!confirm("Approve this leave request?")) return;
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var response = this.responseText.trim();
+
+            if (response === "success") {
+
+                document.querySelector("#row" + rowId + " .btn-pending")
+                        .outerHTML = '<span class="approved">Approved</span>';
+            } else {
+                alert("Approval failed!");
+            }
+        }
+    };
+
+    xhttp.open("POST", "", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("approve_emp_id=" + encodeURIComponent(empId));
+}
+
+</script>
+
 </body>
 </html>

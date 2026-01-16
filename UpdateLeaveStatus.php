@@ -1,6 +1,7 @@
 <?php
 include "db.php";
 
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $leave_id = $_POST['leave_id'];
     $status   = $_POST['status'];
