@@ -31,7 +31,7 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <html>
 <head>
     <title>Leave Management</title>
-    <link rel="stylesheet" href="ManageLeaves.css?v=1.0">
+    <link rel="stylesheet" href="ManageLeaves.CSS?v=1.0">
 </head>
 
 <body>

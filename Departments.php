@@ -12,7 +12,7 @@ if (!$result) {
 <html>
 <head>
     <title>Departments</title>
-    <link rel="stylesheet" href="department.css?v=1.0">
+    <link rel="stylesheet" href="department.CSS?v=1.0">
 </head>
 <body>
 
