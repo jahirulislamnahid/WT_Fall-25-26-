@@ -148,6 +148,30 @@ function approveLeave(empId, rowId) {
     xhttp.send("approve_emp_id=" + encodeURIComponent(empId));
 }
 
+function deleteLeave(empId, rowId) {
+    if (!confirm("Delete this leave request?")) return;
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            var response = this.responseText.trim();
+
+            if (response === "success") {
+                document.getElementById("row" + rowId).remove();
+            }
+            else {
+                alert("Delete failed!");
+            }
+        }
+    };
+
+    xhttp.open("POST", "", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("delete_emp_id=" + encodeURIComponent(empId));
+
+}
+
 </script>
 
 </body>
