@@ -1,58 +1,56 @@
  body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
 
-        .leave-form {
-            background: #fff;
-            padding: 25px;
-            width: 400px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+    font-family: Arial, Helvetica, sans-serif;
+    background: #c0d2d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-        .leave-form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    }
 
-        .leave-form label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
+.leave-form {
+    background: #ece9e9;
+    padding: 25px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: black;
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
 
-        .leave-form input,
-        .leave-form select,
-        .leave-form textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+.leave-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .leave-form textarea {
-            resize: none;
-            height: 80px;
-        }
+.leave-form input,
+.leave-form select,
+.leave-form textarea {
 
-        .leave-form button {
-            margin-top: 15px;
-            width: 100%;
-            padding: 10px;
-            background: #16a085;
-            border: none;
-            color: #fff;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: #020a08;
+    border-radius: 6px;
+}
 
-        .leave-form button:hover {
-            background: #13856b;
-        }
+.leave-form textarea {
+    height: 80px;
+}
+
+.leave-form button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: #ff1212;
+    border: none;
+    color: bisque;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.leave-form button:hover {
+    background: #13856b;
+    color: aquamarine;
+}

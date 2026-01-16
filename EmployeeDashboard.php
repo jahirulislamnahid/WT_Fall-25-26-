@@ -18,23 +18,23 @@ if (!$result) {
 <html>
 <head>
     <title>Employee Dashboard</title>
-    <link rel="stylesheet" href="Employee.css">
+    <link rel="stylesheet" href="Employee.css?v=1.0">
 </head>
 <body>
    
 <div class="container">
-<aside class="sidebar">
-    <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
-    <ul class="menu">
-        <li><a href="dashboard.php" class="menu-btn">Dashboard</a></li>
-        <li><a href="employees.php" class="menu-btn active">Employees</a></li>
-        <li><a href="departments.php" class="menu-btn">Departments</a></li>
-        <li><a href="leave.php" class="menu-btn">Leave Management</a></li>
-        <li><a href="payroll.php" class="menu-btn">Payroll</a></li>
-        <li><a href="attendance.php" class="menu-btn">Attendance</a></li>
-        <li><a href="announcements.php" class="menu-btn">Announcements</a></li>
-    </ul>
-</aside>
+    <aside class="sidebar">
+        <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
+        <ul>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li class="active">Employees</li>
+            <li><a href="Departments.php">Departments</a></li>
+            <li><a href="ManageLeaves.php">Manage Leave</a></li>
+            <li>Payroll</li>
+            <li>Attendance</li>
+            <li>Announcements</li>
+        </ul>
+    </aside>
 
 
     <main class="main">

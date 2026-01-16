@@ -1,18 +1,18 @@
 <?php
 include "db.php";
 
-/* FETCH DEPARTMENTS */
 $result = mysqli_query($conn, "SELECT * FROM departments ORDER BY department_name ASC");
 if (!$result) {
-    die("Database query failed: " . mysqli_error($conn));
+    die("Database Query failed: " . mysqli_error($conn));
 }
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Departments</title>
-    <link rel="stylesheet" href="department.css">
+    <link rel="stylesheet" href="department.css?v=1.0">
 </head>
 <body>
 
@@ -23,7 +23,7 @@ if (!$result) {
             <li><a href="dashboard.php">Dashboard</a></li>
             <li><a href="EmployeeDashboard.php">Employees</a></li>
             <li class="active">Departments</li>
-            <li>Leave Management</li>
+            <li><a href="ManageLeaves.php">Manage Leave</a></li>
             <li>Payroll</li>
             <li>Attendance</li>
             <li>Announcements</li>
@@ -52,7 +52,6 @@ if (!$result) {
                         <td>
                             <a href="EditDepartment.php?name=<?= urlencode($dept["department_name"]) ?>" class="btn edit">Edit</a>
 
-                            <!-- DELETE BUTTON -->
                             <button type="button" class="btn delete"
                                 onclick="deleteDepartment('<?= htmlspecialchars($dept['department_name']) ?>', '<?= $rowId ?>')">
                                 Delete

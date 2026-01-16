@@ -1,46 +1,43 @@
-
 <!DOCTYPE html>
+<html>
 <head>
     <title>Add Leave</title>
     <link rel="stylesheet" href="AddLeave.CSS">
-
-
+    <script src="AddLeave.js"></script>
 </head>
 <body>
+    
 
 <div class="leave-form">
     <h2>Add Leave</h2>
-
     <form action="AddLeaveProcess.php" method="post" onsubmit="return validateForm();">
-
-        <label for="emp_id">Employee ID</label>
+        Employee ID
         <input type="text" name="emp_id" id="emp_id" required>
 
-        <label for="emp_name">Employee Name</label>
+        Employee Name
         <input type="text" name="emp_name" id="emp_name" required>
 
-        <label for="leave_type">Leave Type</label>
+        Leave Type
         <select name="leave_type" id="leave_type" required>
-            <option value="">-- Select Leave Type --</option>
+            <option value=""> Select Leave type </option>
             <option value="Sick Leave">Sick Leave</option>
-            <option value="Casual Leave">Casual Leave</option>
+            <option value="casual Leave">Casual Leave</option>
             <option value="Annual Leave">Annual Leave</option>
         </select>
 
-        <label for="department">Department</label>
+        Department
         <input type="text" name="department" id="department" required>
 
-        <label for="reason">Reason for Leave</label>
+        Reason for Leave
         <textarea name="reason" id="reason" required></textarea>
 
-        <label for="start_date">Start Date</label>
+        Start Date
         <input type="date" name="start_date" id="start_date" required>
 
-        <label for="end_date">End Date</label>
+        End Date
         <input type="date" name="end_date" id="end_date" required>
 
         <button type="submit">Submit Leave</button>
-
     </form>
 </div>
 

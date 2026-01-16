@@ -1,49 +1,39 @@
 <?php
-include "db.php"; // Your database connection file
-
+include "db.php";
 
 session_start();
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
-    exir();
+    exit();
 }
 
-
-$result = mysqli_query($conn, "SELECT COUNT(*) AS total FROM employees");
-if (!$result) {
-    die ("Database query failed: " .mysqli_erroe($conn));
-}
-$row = mysqli_fetch_assoc($result);
-$totalEmployees = $row['total'] ?? 0;
-
+$resultEmp = mysqli_query($conn, "SELECT COUNT(*) AS total FROM employees");
+$rowEmp = mysqli_fetch_assoc($resultEmp);
+$totalEmployees = $rowEmp['total'] ?? 0;
 
 $resultDept = mysqli_query($conn, "SELECT COUNT(*) AS total FROM departments");
-if (!$resultDept) {
-    die("Database query failed: " . mysqli_error($conn));
-}
 $rowDept = mysqli_fetch_assoc($resultDept);
 $totalDepartments = $rowDept['total'] ?? 0;
 
+$today = date("y-m-d");
+$resultOnLeave = mysqli_query($conn, "
+    SELECT COUNT(*) AS total
+    FROM leaves
+    WHERE status='Approved'
+    AND start_date <= '$today'
+    AND end_date  >= '$today'
+");
+$rowOnLeave = mysqli_fetch_assoc($resultOnLeave);
+$onLeaveToday = $rowOnLeave['total'] ?? 0;
 
-// -----------------------
-// Leave stats (keep session-based)
-// -----------------------
-$leaves = $_SESSION["leaves"] ?? [];
-$today = date("Y-m-d");
+$resultPending = mysqli_query($conn, "SELECT COUNT(*) AS total FROM leaves WHERE status='pending'");
+$rowPending = mysqli_fetch_assoc($resultPending);
+$pendingApprovals = $rowPending['total'] ?? 0;
 
-$onLeaveToday = 0;
-$pendingApprovals = 0;
+$resultApproved = mysqli_query($conn, "SELECT COUNT(*) AS total FROM leaves WHERE status='Approved'");
+$rowApproved = mysqli_fetch_assoc($resultApproved);
+$totalApprovedLeaves = $rowApproved['total'] ?? 0;
 
-foreach ($leaves as $leave) {
-    // Count approved leaves for today
-    if ($leave['status'] === "Approved" && $today >= $leave['start_date'] && $today <= $leave['end_date']) {
-        $onLeaveToday++;
-    }
-    // Count pending leaves
-    if ($leave['status'] === "Pending") {
-        $pendingApprovals++;
-    }
-}
 ?>
 
 
@@ -51,7 +41,7 @@ foreach ($leaves as $leave) {
 <html>
 <head>
     <title>Dashboard</title>
-     <link rel="stylesheet" href="dashboard.CSS">
+     <link rel="stylesheet" href="dashboard.CSS?v=1.0">
 </head>
 <body>
 
@@ -64,9 +54,7 @@ foreach ($leaves as $leave) {
             <div class="top-actions">
             <li class="active">Dashboard</li>
             <li>
-            <a href="EmployeeDashboard.php">
-                <button class="btn add">Employee</button>
-                </a>
+            <a href="EmployeeDashboard.php">Employee</a>
             </li>
             <li>
             <a href="Departments.php">Departments</a>
@@ -137,6 +125,7 @@ foreach ($leaves as $leave) {
 
             <div class="small-card">
                 <h4>Approved Leave</h4>
+                <p><?= $totalApprovedLeaves ?></p>
             </div>
 
             <div class="small-card">
