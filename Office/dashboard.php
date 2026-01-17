@@ -41,7 +41,7 @@ $totalApprovedLeaves = $rowApproved['total'] ?? 0;
 <html>
 <head>
     <title>Dashboard</title>
-     <link rel="stylesheet" href="dashboard.CSS?v=1.0">
+     <link rel="stylesheet" href="dashboard.CSS">
 </head>
 <body>
 
@@ -62,7 +62,9 @@ $totalApprovedLeaves = $rowApproved['total'] ?? 0;
              <li>
             <a href="ManageLeaves.php">Maange Leave</a>
             </li>
-            <li>Payroll</li>
+            <li>
+            <a href="Payroll.php">Payroll</a>
+            </li>
             <li>Attendance</li>
             <li>Announcements</li>
             </div>

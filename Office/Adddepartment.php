@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "Department name is required!";
     } else {
 
-        /* OPTIONAL: prevent duplicate department */
         $check = mysqli_query(
             $conn,
             "SELECT * FROM departments WHERE department_name='$departmentName'"
