@@ -58,6 +58,7 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <head>
         <title> Payroll </title>
         <link rel="stylesheet" href="Payroll.css">
+        <script src="payrollvalidation.js"></script>
 </head>
 
 <body>
@@ -79,17 +80,17 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <h2> Payroll Management</h2>
             </header>
 
-        <div class="form-box">
+        <div class="form-box" >
             <h3> Create Payroll </h3>
-            <form method="POST">
+            <form method="POST" onsubmit="return validatePayrollForm();">
                 Employee name
-                <input type="text" name="emp_name" placeholder="Employee Name" required>
+                <input type="text"  id="emp_name" name="emp_name" placeholder="Employee Name">
                 Salary
-                <input type="number" name="salary" placeholder="Employee Name" required>
+                <input type="number"  id="salary" name="salary" placeholder="Employee Name">
                 Starting Period
-                <input type="date" name="period_start" required>
+                <input type="date" id="period_start" name="period_start">
                 Ending Period
-                <input type="date" name="period_end" required>
+                <input type="date"  id="period_end" name="period_end">
 
                 <button class="btn" type="submit" name="create_payroll">Create Payroll</button>
             </form>
