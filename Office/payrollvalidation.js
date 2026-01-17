@@ -20,6 +20,23 @@ function validatePayrollForm() {
         return false;
     }
 
-}
+    if (startDate === "") {
+        alert("starting date is required!")
+        return false;
+    }
 
+    if (endDate === "") {
+        alert("Ending period also required!")
+        return false;
+    }
+
+    if (endDate < startDate) {
+        alert("Ending period cannot be before starting period.");
+        return false;
+    }
+
+    return true;
+
+
+}
 

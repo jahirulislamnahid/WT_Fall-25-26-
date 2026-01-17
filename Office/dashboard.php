@@ -34,6 +34,16 @@ $resultApproved = mysqli_query($conn, "SELECT COUNT(*) AS total FROM leaves WHER
 $rowApproved = mysqli_fetch_assoc($resultApproved);
 $totalApprovedLeaves = $rowApproved['total'] ?? 0;
 
+
+$resultapprovedPayroll = mysqli_query($conn, "
+     SELECT COUNT(*) AS total
+     FROM payroll
+     WHERE status = 'paid'
+
+");
+$rowapprovedPayroll = mysqli_fetch_assoc($resultapprovedPayroll);
+$approvedPayrolls = $rowapprovedPayroll['total'] ?? 0;
+
 ?>
 
 
@@ -116,7 +126,7 @@ $totalApprovedLeaves = $rowApproved['total'] ?? 0;
 
         <section class="small-cards">
             <div class="small-card">
-                <h4>Present Today</h4>
+                <h4>Pending Payrolls</h4>
                 <p>0</p>
             </div>
 
@@ -131,8 +141,8 @@ $totalApprovedLeaves = $rowApproved['total'] ?? 0;
             </div>
 
             <div class="small-card">
-                <h4>Pending Payrolls</h4>
-                <p>0</p>
+                <h4>Approved Payrolls</h4>
+                <p><?= $approvedPayrolls?></p>
             </div>
         </section>
 

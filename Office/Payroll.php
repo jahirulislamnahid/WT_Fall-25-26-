@@ -86,7 +86,7 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 Employee name
                 <input type="text"  id="emp_name" name="emp_name" placeholder="Employee Name">
                 Salary
-                <input type="number"  id="salary" name="salary" placeholder="Employee Name">
+                <input type="number"  id="salary" name="salary" placeholder="Salary">
                 Starting Period
                 <input type="date" id="period_start" name="period_start">
                 Ending Period
