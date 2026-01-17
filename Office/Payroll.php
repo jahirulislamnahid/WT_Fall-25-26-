@@ -98,5 +98,18 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <th>Action</th>
                         </tr>    
                 </thead>
+                <tbody>
+                    <?php foreach ($payrolls as $i => $p) : ?>
+                        <tr>
+                            <td><?= $i +1 ?></td>
+                            <td><?= htmlspecialchars($p['emp_name']) ?></td>
+                            <td><?= $p['salary'] ?></td>
+                            <td><?= $p['period_start'] ?> - <?= $p['period_end'] ?></td>
+                            <td><?= $p['status'] ?></td>
+                            <td>
+                                <?php if ($p['status'] === 'pending'): ?>
+                                    <from method="POST"style="display: inline;">
+                                        <input type="hidden" name="process_emp" value="<?= htmlspecialchars($p['emp_name']) ?>">
 
-      
+
+              
