@@ -43,3 +43,45 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Payroll </title>
+        <link rel="stylesheet" href="Payroll.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2 class="logo">Neurobyte<br>Technologies<br>LTD</h2>
+            <ul>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="EmployeeDashboard.php">Employees</a><li>
+                <li><a href="Departments.php">Departments</a><li>
+                <li><a href="ManageLeaves.php">Leave Management</a></li>
+                <li class="active">Payroll</li>
+            </ul>
+         </aside>    
+         
+         <main class ="main">
+            <header class="topbar">
+                <h2> Payroll Management</h2>
+            </header>
+
+        <div class="form-box">
+            <h3> Create Payroll </h3>
+            <form method="POST">
+                Employee name
+                <input type="text" name="emp_name" placeholder="Employee Name" required>
+                Salary
+                <input type="number" name="salary" placeholder="Employee Name" required>
+                Starting Period
+                <input type="date" name="period_start" required>
+                Ending Period
+                <input type="date" name="period_end" required>
+
+                <button class="btn" type="submit" name="create_payroll">Create Payroll</button>
+            </form>
+            </div>
+
+     
