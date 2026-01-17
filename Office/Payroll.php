@@ -84,4 +84,19 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
             </form>
             </div>
 
-     
+            <div class="employee-table-container">
+                <h3> Payroll Records </h3>
+
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>Serial No</th>
+                            <th>Employee name</th>
+                            <th>Salary</th>
+                            <th>Period</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>    
+                </thead>
+
+      
