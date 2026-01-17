@@ -24,7 +24,7 @@ if (!$result) {
             <li><a href="EmployeeDashboard.php">Employees</a></li>
             <li class="active">Departments</li>
             <li><a href="ManageLeaves.php">Manage Leave</a></li>
-            <li>Payroll</li>
+            <li><a href="Payroll.php">Payroll</a></li>
             <li>Attendance</li>
             <li>Announcements</li>
         </ul>
