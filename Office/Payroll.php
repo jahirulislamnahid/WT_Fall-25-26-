@@ -108,8 +108,21 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
                             <td><?= $p['status'] ?></td>
                             <td>
                                 <?php if ($p['status'] === 'pending'): ?>
-                                    <from method="POST"style="display: inline;">
+                                    <form method="POST"style="display: inline;">
                                         <input type="hidden" name="process_emp" value="<?= htmlspecialchars($p['emp_name']) ?>">
+                                        <button class="btn-pending" type="submit">Process Payment</button>
+                                    </form>
+                                <?php else: ?>
+                                    <span class="approved">Paid</span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
 
-
-              
+    </main>
+</div>
+</body>
+</html>
