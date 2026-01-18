@@ -7,6 +7,7 @@ if (!isset($_SESSION["username"])) {
     exit();
 }
 
+
 $resultEmp = mysqli_query($conn, "SELECT COUNT(*) AS total FROM employees");
 $rowEmp = mysqli_fetch_assoc($resultEmp);
 $totalEmployees = $rowEmp['total'] ?? 0;

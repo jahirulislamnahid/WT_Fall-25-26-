@@ -1,12 +1,10 @@
 <?php
-// session jibito kora
 session_start();
-// session mere fela
+
 session_destroy();
 
-//
+setcookie("logged_out", "true", time() + 60, "/"); // expires in 60 sec
 
-header("Location:login.php");
+header("Location: homepage.php");
 exit();
-
 ?>
