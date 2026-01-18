@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../Model/db.php";
 
 $department = $_GET["name"] ?? null; 
 
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST")  {
 <html>
 <head>
     <title>Edit Department</title>
-    <link rel="stylesheet" href="EditDepartment.css">
+    <link rel="stylesheet" href="../css/EditDepartment.css">
 </head>
 
 <body>

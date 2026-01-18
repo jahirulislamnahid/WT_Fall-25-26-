@@ -1,93 +1,75 @@
 <?php
-include "db.php";
- 
-$success=$error="";
-if($_SERVER["REQUEST_METHOD"]== "POST")
-{
-$username=$_POST["username"];
-$password=$_POST["password"];
- 
-if(empty($username)||empty($password))
-{
-$error="All the field must be fill_up";
-}
- 
-else{
-$hassPassword= password_hash($password,PASSWORD_DEFAULT);
- 
-$sql= "INSERT INTO users(username,password) VALUES ('$username','$hassPassword')";
-if($conn->query($sql))
-{
-    $success="Registration Complete you can do the login";
-}
- 
-else{
- 
-    $error = "Error: .".$conn->error;
-}
- 
- 
-}
- 
- 
- 
-}
- 
-?>
- 
-<?php
+include "../Model/db.php";
 session_start();
-if (isset($_SESSION["username"]))
-{
-    header("Location:dashboard.php");
+
+$error = "";
+
+if (!isset($_SESSION["username"]) && isset($_COOKIE["username"]) && !isset($_COOKIE["logged_out"])) {
+    $_SESSION["username"] = $_COOKIE["username"];
+    header("Location: dashboard.php");
     exit();
 }
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
-$user=$_POST["username"];
-$pass=$_POST["password"];
 
-if ($user=="admin" && $pass=="1234")
-{
-
-    $_SESSION["username"] = $user;
-    header("Location:dashboard.php");
+if (isset($_SESSION["username"])) {
+    header("Location: dashboard.php");
     exit();
 }
-else{
 
-    $error="Invalid Id and pass";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $user = trim($_POST["username"]);
+    $pass = trim($_POST["password"]);
+    $remember = isset($_POST["remember"]);
+
+    if (empty($user) || empty($pass)) {
+        $error = "All the fields are required";
+    } else {
+        if ($user == "admin" && $pass == "1234") {
+            $_SESSION["username"] = $user;
+
+            if ($remember) {
+                setcookie("username", $user, time() + (7 * 24 * 60 * 60), "/");
+            }
+
+            if (isset($_COOKIE["logged_out"])) {
+                setcookie("logged_out", "", time() - 3600, "/");
+            }
+
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            $error = "Invalid username or password";
+        }
+    }
 }
 
-}
 
 ?>
-<DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="login.CSS">  
+    <link rel="stylesheet" href="../css/login.CSS">
+
 </head>
 <body>
-     <div class="login-box">
-        <img src="Screenshot 2025-12-09 205239.png">
-
-
-        <h2>Admin Panel</h2>
-        <p>Sign in with your admin Information</p>
+<div class="login-box">
+    <img src="../Image/Screenshot 2025-12-09 205239.png" alt="Logo">
+    <h2>Admin Panel</h2>
+    <p>Sign in with your admin information</p>
 
     <form method="post">
-    <input type="text" name="username" placeholder="Username"><br><br>
-    <input type="password" name="password" placeholder="Password"><br><br>
-    <input type="submit" value="Login">
-
+        <input type="text" name="username" placeholder="Username" required><br><br>
+        <input type="password" name="password" placeholder="Password" required><br><br>
+        <label>
+            <input type="checkbox" name="remember"> Remember Me
+        </label><br><br>
+        <input type="submit" value="Login">
     </form>
 
-    </div>
-
-<p style="color:red;">
-    <?php if (isset($error)) echo $error; ?>
-</p>
-
+    <?php if (!empty($error)) : ?>
+        <p style="color:red;"><?php echo $error; ?></p>
+    <?php endif; ?>
+</div>
 </body>
 </html>

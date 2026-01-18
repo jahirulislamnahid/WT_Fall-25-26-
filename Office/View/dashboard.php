@@ -1,11 +1,13 @@
 <?php
-include "db.php";
+include "../Model/db.php";
+
 
 session_start();
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
     exit();
 }
+
 
 $resultEmp = mysqli_query($conn, "SELECT COUNT(*) AS total FROM employees");
 $rowEmp = mysqli_fetch_assoc($resultEmp);
@@ -34,6 +36,24 @@ $resultApproved = mysqli_query($conn, "SELECT COUNT(*) AS total FROM leaves WHER
 $rowApproved = mysqli_fetch_assoc($resultApproved);
 $totalApprovedLeaves = $rowApproved['total'] ?? 0;
 
+
+$resultapprovedPayroll = mysqli_query($conn, "
+     SELECT COUNT(*) AS total
+     FROM payroll
+     WHERE status = 'paid'
+
+");
+$rowapprovedPayroll = mysqli_fetch_assoc($resultapprovedPayroll);
+$approvedPayrolls = $rowapprovedPayroll['total'] ?? 0;
+
+$resultAnnouncements = mysqli_query($conn, "
+     SELECT COUNT(*) AS total
+     FROM announcements
+ 
+   ");
+$rowAnnouncements = mysqli_fetch_assoc($resultAnnouncements);
+$totalAnnouncements = $rowAnnouncements['total'] ?? 0;
+
 ?>
 
 
@@ -41,7 +61,7 @@ $totalApprovedLeaves = $rowApproved['total'] ?? 0;
 <html>
 <head>
     <title>Dashboard</title>
-     <link rel="stylesheet" href="/project/Office/css/dashboard.CSS">
+     <link rel="stylesheet" href="../css/dashboard.CSS">
 </head>
 <body>
 
@@ -62,9 +82,10 @@ $totalApprovedLeaves = $rowApproved['total'] ?? 0;
              <li>
             <a href="ManageLeaves.php">Maange Leave</a>
             </li>
-            <li>Payroll</li>
-            <li>Attendance</li>
-            <li>Announcements</li>
+            <li>
+            <a href="Payroll.php">Payroll</a>
+            </li>
+            <li><a href="announce.php">Announcement</a></li>
             </div>
         </ul>
     </aside>
@@ -114,13 +135,13 @@ $totalApprovedLeaves = $rowApproved['total'] ?? 0;
 
         <section class="small-cards">
             <div class="small-card">
-                <h4>Present Today</h4>
+                <h4>Pending Payrolls</h4>
                 <p>0</p>
             </div>
 
             <div class="small-card">
                 <h4>Total Announcements</h4>
-                <p>0</p>
+                <p><?= $totalAnnouncements ?></p>
             </div>
 
             <div class="small-card">
@@ -129,8 +150,8 @@ $totalApprovedLeaves = $rowApproved['total'] ?? 0;
             </div>
 
             <div class="small-card">
-                <h4>Pending Payrolls</h4>
-                <p>0</p>
+                <h4>Approved Payrolls</h4>
+                <p><?= $approvedPayrolls?></p>
             </div>
         </section>
 

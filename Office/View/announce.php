@@ -1,22 +1,23 @@
 <?php
-include "db.php";
+include "../Model/db.php";
+
 
 if (isset($_POST['create_announcement'])) {
 
 $title = $_POST['title'];
 
-$uploadDir = "uploads/";
+$uploadDir = "../uploads/";
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0777, true);
 }
 
-$fileName = time() . "_" . $FILES['pdf']['name'];
+$fileName = time() . "_" . $_FILES['pdf']['name'];
 $filePath = $uploadDir . $fileName;
 
 move_uploaded_file($_FILES['pdf']['tmp_name'], $filePath);
 
 mysqli_query($conn, "
-    INSERT INTO announcemnets (title, file_path)
+    INSERT INTO announcements (title, file_path)
     VALUES ('$title', '$filePath')
 
   ");
@@ -39,7 +40,7 @@ $announcements = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <html>
     <head>
         <title>Announcements</title>
-        <link rel="stylesheet" href="announce.css">
+        <link rel="stylesheet" href="../css/announce.css">
     </head>
 <body>
     <div class="container">
@@ -62,7 +63,7 @@ $announcements = mysqli_fetch_all($result, MYSQLI_ASSOC);
         </header>
         
         <div class="form-box">
-            <form mathod="POST">
+            <form method="POST" enctype="multipart/form-data">
                 Title 
                 <input type="text" name="title" required>
                 Upload file

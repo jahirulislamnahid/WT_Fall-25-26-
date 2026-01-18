@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../Model/db.php";
 
 if (!isset($_POST['department_name'])) {
     echo "missing";

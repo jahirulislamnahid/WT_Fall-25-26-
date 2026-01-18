@@ -1,6 +1,6 @@
 <?php
-include "db.php";
-include "AddEmployeeValidation.php";
+include "../Model/db.php";
+include "../JS/AddEmployeeValidation.php";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
              '$salary', '$dob', '$experience', '$hashedPassword')";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: EmployeeDashboard.php");
+        header("Location: ../View/EmployeeDashboard.php");
         exit();
     } else {
         die("Error inserting employee: " . mysqli_error($conn));

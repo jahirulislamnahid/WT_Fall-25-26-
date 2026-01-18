@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../Model/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['approve_emp_id'])) {
     $emp_id = mysqli_real_escape_string($conn, $_POST['approve_emp_id']);
@@ -32,7 +32,7 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <html>
 <head>
     <title>Leave Management</title>
-    <link rel="stylesheet" href="ManageLeaves.css?v=1.0">
+    <link rel="stylesheet" href="../css/ManageLeaves.CSS">
 </head>
 
 <body>
@@ -45,9 +45,9 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <li><a href="EmployeeDashboard.php">Employees</a></li>
             <li><a href="Departments.php">Departments</a></li>
             <li class="active">Leave Management</li>
-            <li>Payroll</li>
+            <li><a href="Payroll.php">Payroll</a></li>
             <li>Attendance</li>
-            <li>Announcements</li>
+            <li><a href="announce.php">Announcement</a></li>
         </ul>
     </aside>
 

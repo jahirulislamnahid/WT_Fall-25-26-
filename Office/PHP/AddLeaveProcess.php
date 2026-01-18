@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../Model/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             VALUES ('$emp_id', '$emp_name', '$leave_type', '$department', '$reason', '$start_date', '$end_date', '$days', 'Pending')";
 
     if (mysqli_query($conn, $sql)) {
-        header("Location: ManageLeaves.php");
+        header("Location: ../View/ManageLeaves.php");
         exit();
     } else {
         echo "Error: " . mysqli_error($conn);

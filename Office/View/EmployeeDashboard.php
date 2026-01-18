@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../Model/db.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_id'])) {
     $username = $_POST['delete_id'];
@@ -18,7 +18,7 @@ if (!$result) {
 <html>
 <head>
     <title>Employee Dashboard</title>
-    <link rel="stylesheet" href="Employee.css?v=1.0">
+    <link rel="stylesheet" href="../css/Employee.css">
 </head>
 <body>
    
@@ -30,9 +30,9 @@ if (!$result) {
             <li class="active">Employees</li>
             <li><a href="Departments.php">Departments</a></li>
             <li><a href="ManageLeaves.php">Manage Leave</a></li>
-            <li>Payroll</li>
+            <li><a href="Payroll.php">Payroll</a></li>
             <li>Attendance</li>
-            <li>Announcements</li>
+            <li><a href="announce.php">Announcement</a></li>
         </ul>
     </aside>
 

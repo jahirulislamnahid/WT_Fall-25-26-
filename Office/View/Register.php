@@ -2,13 +2,13 @@
 <html>
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="register.CSS">
+    <link rel="stylesheet" href="../css/register.CSS">
 
 </head>
 <body>
 
     <div class="login-box">
-        <img src="Screenshot 2025-12-09 205239.png">
+        <img src="../Image/Screenshot 2025-12-09 205239.png">
 
 
         <h2>Admin Panel</h2>

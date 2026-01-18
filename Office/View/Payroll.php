@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../Model/db.php";
 
 // Crrate payroll insert into the database
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['create_payroll'])) {
@@ -57,7 +57,7 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <html>
     <head>
         <title> Payroll </title>
-        <link rel="stylesheet" href="Payroll.css">
+        <link rel="stylesheet" href="../css/Payroll.css">
         <script src="payrollvalidation.js"></script>
 </head>
 
@@ -71,7 +71,7 @@ $payrolls = mysqli_fetch_all($result, MYSQLI_ASSOC);
                 <li><a href="Departments.php">Departments</a></li>
                 <li><a href="ManageLeaves.php">Leave Management</a></li>
                 <li class="active">Payroll</li>
-                <li>Announcement</li>
+                <li><a href="announce.php">Announcement</a></li>
             </ul>
          </aside>    
          

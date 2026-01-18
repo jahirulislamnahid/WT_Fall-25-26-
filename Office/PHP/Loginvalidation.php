@@ -9,13 +9,13 @@ if ($adminID === "admin" && $password === "1234") {
     
     $_SESSION['admin'] = $adminID;
 
-    header("Location: dashboard.php");
+    header("Location: ../View/dashboard.php");
     exit();
 
 } else {
     echo "<script>
         alert('Invalid Admin ID or Password');
-        window.location.href = 'login.php';
+        window.location.href = '../View/login.php';
     </script>";
 }
 ?>

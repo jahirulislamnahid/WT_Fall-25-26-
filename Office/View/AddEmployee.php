@@ -2,14 +2,14 @@
 <html>
 <head>
     <title>Add New Employee</title>
-    <link rel="stylesheet" href="AddEmployee.css">
+    <link rel="stylesheet" href="../css/AddEmployee.css">
 </head>
 <body>
 
 <div class="content">
     <h2>Add New Employee</h2>
 
-    <form class="employee-form" method="POST" action="AddEmployeeProcess.php">
+    <form class="employee-form" method="POST" action="../PHP/AddEmployeeProcess.php">
 
         <label>Username</label>
         <input type="text" name="username" required>

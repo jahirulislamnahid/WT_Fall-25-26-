@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Add Leave</title>
-    <link rel="stylesheet" href="AddLeave.CSS">
+    <link rel="stylesheet" href="../css/AddLeave.CSS">
     <script src="AddLeave.js"></script>
 </head>
 <body>
@@ -10,7 +10,7 @@
 
 <div class="leave-form">
     <h2>Add Leave</h2>
-    <form action="AddLeaveProcess.php" method="post" onsubmit="return validateForm();">
+    <form action="../PHP/AddLeaveProcess.php" method="post" onsubmit="return validateForm();">
         Employee ID
         <input type="text" name="emp_id" id="emp_id" required>
 

@@ -1,5 +1,6 @@
 <?php
-include "db.php";
+include "../Model/db.php";
+
 
 $result = mysqli_query($conn, "SELECT * FROM departments ORDER BY department_name ASC");
 if (!$result) {
@@ -12,7 +13,7 @@ if (!$result) {
 <html>
 <head>
     <title>Departments</title>
-    <link rel="stylesheet" href="department.CSS?v=1.0">
+    <link rel="stylesheet" href="../css/department.CSS">
 </head>
 <body>
 
@@ -24,9 +25,9 @@ if (!$result) {
             <li><a href="EmployeeDashboard.php">Employees</a></li>
             <li class="active">Departments</li>
             <li><a href="ManageLeaves.php">Manage Leave</a></li>
-            <li>Payroll</li>
+            <li><a href="Payroll.php">Payroll</a></li>
             <li>Attendance</li>
-            <li>Announcements</li>
+            <li><a href="announce.php">Announcement</a></li>
         </ul>
     </aside>
 

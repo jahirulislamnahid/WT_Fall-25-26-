@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../Model/db.php";
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $sql = "UPDATE leaves SET status='$status' WHERE id='$leave_id'";
     if (mysqli_query($conn, $sql)) {
-        header("Location: ManageLeaves.php");
+        header("Location: ../View/ManageLeaves.php");
         exit();
     }
     else {

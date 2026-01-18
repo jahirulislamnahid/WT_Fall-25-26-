@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include "../Model/db.php";
 
 $error = "";
 
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 <head>
     <title>Add Department</title>
-    <link rel="stylesheet" href="Adddepartment.css">
+    <link rel="stylesheet" href="../css/Adddepartment.css">
 </head>
 
 <body>
