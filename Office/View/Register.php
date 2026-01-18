@@ -1,8 +1,8 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="../css/register.CSS">
+    <link rel="stylesheet" href="../css/register.css">
 
 </head>
 <body>
@@ -14,7 +14,7 @@
         <h2>Admin Panel</h2>
         <p>Register with your admin Information</p>
 
-    <form method="post" action="Loginvalidation.php">
+    <form method="post" action="../PHP/Loginvalidation.php">
     <input type="text" name="adminID" placeholder="Admin ID">
     <input type="password" name="password" placeholder="Password">
     <input type="password" name="password" placeholder=" Confirm Password">

@@ -1,4 +1,4 @@
-<style>
+
         * {
             margin: 0;
             padding: 0;
@@ -8,7 +8,7 @@
 
         body {
             height: 100vh;
-            background: #8eaeddff;
+            background: rgb(236, 237, 239);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -62,5 +62,3 @@
         .login-box button:hover {
             background: #14285f;
         }
-
-    </style>

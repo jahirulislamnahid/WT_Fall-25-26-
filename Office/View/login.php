@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 <head>
     <title>Admin Login</title>
-    <link rel="stylesheet" href="../css/login.CSS">
+    <link rel="stylesheet" href="../css/login.css">
 
 </head>
 <body>
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <label>
             <input type="checkbox" name="remember"> Remember Me
         </label><br><br>
-        <input type="submit" value="Login">
+        <button type="submit">Login</button>
     </form>
 
     <?php if (!empty($error)) : ?>
