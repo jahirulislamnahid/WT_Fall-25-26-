@@ -44,6 +44,14 @@ $resultapprovedPayroll = mysqli_query($conn, "
 $rowapprovedPayroll = mysqli_fetch_assoc($resultapprovedPayroll);
 $approvedPayrolls = $rowapprovedPayroll['total'] ?? 0;
 
+$resultAnnouncements = mysqli_query($conn, "
+     SELECT COUNT(*) AS total
+     FROM announcements
+ 
+   ");
+$rowAnnouncements = mysqli_fetch_assoc($resultAnnouncements);
+$totalAnnouncements = $rowAnnouncements['total'] ?? 0;
+
 ?>
 
 
@@ -132,7 +140,7 @@ $approvedPayrolls = $rowapprovedPayroll['total'] ?? 0;
 
             <div class="small-card">
                 <h4>Total Announcements</h4>
-                <p>0</p>
+                <p><?= $totalAnnouncements ?></p>
             </div>
 
             <div class="small-card">
