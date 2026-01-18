@@ -72,3 +72,20 @@ $announcements = mysqli_fetch_all($result, MYSQLI_ASSOC);
             </form> 
             </div>
 
+        <div class="announcement-area">
+            <?php foreach ($announcements as $a): ?>
+                <div class="announcement-banner">
+
+                   <h4><?= htmlspecialchars($a['title']) ?></h4>
+                   <p>Published: <?= date("d M Y", strtotime($a['created_at'])) ?></p>
+                   <a href="<?= $a['file_path'] ?>" target="_blank" class="btn-pending">
+                        View / Download PDF
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+    </main>
+</div>
+</body>
+</html>
