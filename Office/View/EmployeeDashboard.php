@@ -31,7 +31,6 @@ if (!$result) {
             <li><a href="Departments.php">Departments</a></li>
             <li><a href="ManageLeaves.php">Manage Leave</a></li>
             <li><a href="Payroll.php">Payroll</a></li>
-            <li>Attendance</li>
             <li><a href="announce.php">Announcement</a></li>
         </ul>
     </aside>

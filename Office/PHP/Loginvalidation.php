@@ -15,7 +15,7 @@ if ($adminID === "admin" && $password === "1234") {
 } else {
     echo "<script>
         alert('Invalid Admin ID or Password');
-        window.location.href = '../View/login.php';
+        window.location.href = '../View/Register.php';
     </script>";
 }
 ?>

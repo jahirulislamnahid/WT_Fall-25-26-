@@ -46,7 +46,6 @@ $leaves = mysqli_fetch_all($result, MYSQLI_ASSOC);
             <li><a href="Departments.php">Departments</a></li>
             <li class="active">Leave Management</li>
             <li><a href="Payroll.php">Payroll</a></li>
-            <li>Attendance</li>
             <li><a href="announce.php">Announcement</a></li>
         </ul>
     </aside>
